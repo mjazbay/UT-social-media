@@ -2,7 +2,7 @@
 //  MenuTableViewController.swift
 //  UTSocial
 //
-//  Created by Maksat Zhazbayev on 4/9/19.
+//  Created by Maksat Zhazbayev on 4/11/19.
 //  Copyright © 2019 Maksat Zhazbayev. All rights reserved.
 //
 
@@ -11,8 +11,7 @@ import UIKit
 enum MenuType: Int {
     case sublease
     case buy
-    case events
-}
+    case events }
 
 class MenuTableViewController: UITableViewController {
 
@@ -20,11 +19,11 @@ class MenuTableViewController: UITableViewController {
         super.viewDidLoad()
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let menuType = MenuType(rawValue: indexPath.row) else {return}
-        dismiss(animated: true) {
-            print("Dismissing: \(menuType)")
-        }
-    }
+    // MARK: - Table view data source
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let menuType = MenuType(rawValue: indexPath.row)
+        dismiss(animated: true, completion: nil)
+                
+    }
 }

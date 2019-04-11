@@ -2,42 +2,38 @@
 //  HomeViewController.swift
 //  UTSocial
 //
-//  Created by Maksat Zhazbayev on 4/9/19.
+//  Created by Maksat Zhazbayev on 4/11/19.
 //  Copyright © 2019 Maksat Zhazbayev. All rights reserved.
 //
 
 import UIKit
 
-class HomeViewController: UITabBarController { //UIViewController {
-    
+class HomeViewController: UITabBarController {
     let transition = slideInTransition()
     
-
+    @IBAction func menuButton(_ sender: Any)
+    {
+        guard let menuVC = storyboard?.instantiateViewController(withIdentifier: "menuVC") else {return}
+        menuVC.modalPresentationStyle = .overCurrentContext
+        menuVC.transitioningDelegate = self
+        present(menuVC, animated: true, completion: nil)
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
-    @IBAction func MenuButton(_ sender: UIBarButtonItem)
-    {
-   guard let menuVC = storyboard?.instantiateViewController(withIdentifier: "menuVC") else { return }
-        
-        menuVC.modalTransitionStyle = .flipHorizontal
-        menuVC.transitioningDelegate = self
-        
-        present(menuVC, animated: true)
-    }
 }
-
 extension HomeViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.isPresenting = true
+        transition.menuShowing = true
         return transition
     }
-    
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.isPresenting = false
+        transition.menuShowing = false
         return transition
     }
 }

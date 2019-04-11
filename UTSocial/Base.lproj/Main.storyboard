@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RUr-Vf-XDw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tdx-38-veS">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="VC1ViewController" customModule="UTSocial" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,7 +24,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1087" y="2356"/>
+            <point key="canvasLocation" x="-1088.4057971014493" y="2355.8035714285711"/>
         </scene>
         <!--UT Map-->
         <scene sceneID="3ms-qQ-rDO">
@@ -45,32 +45,15 @@
             </objects>
             <point key="canvasLocation" x="-1087" y="1604"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="xYO-U8-Ugb">
-            <objects>
-                <navigationController id="RUr-Vf-XDw" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7Fa-zL-OPs">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="nJk-Yw-haN" kind="relationship" relationship="rootViewController" id="poT-Kw-qo6"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2Df-x8-pzH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="377" y="24"/>
-        </scene>
-        <!--Home-->
+        <!--Home View Controller-->
         <scene sceneID="4t2-SW-ZeQ">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="nJk-Yw-haN" customClass="HomeViewController" customModule="UTSocial" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Home" largeTitleDisplayMode="always" id="fWw-Nm-7Ch">
-                        <barButtonItem key="leftBarButtonItem" title="menuLogo" image="utmenulogo" id="U9p-lB-TF3">
-                            <color key="tintColor" red="0.89804786439999995" green="0.38825678829999999" blue="0.29802778359999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="fWw-Nm-7Ch">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="IsI-HZ-x9M">
                             <connections>
-                                <action selector="MenuButton:" destination="nJk-Yw-haN" id="UXM-98-Pjv"/>
+                                <action selector="menuButton:" destination="nJk-Yw-haN" id="kcg-Uy-s2j"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -82,7 +65,7 @@
                     <connections>
                         <segue destination="qD3-gV-0PO" kind="relationship" relationship="viewControllers" id="jTa-6h-ifg"/>
                         <segue destination="GbQ-J6-tXr" kind="relationship" relationship="viewControllers" id="R2P-L3-M3Z"/>
-                        <segue destination="YqO-ni-W1y" kind="relationship" relationship="viewControllers" id="JpR-DS-ez2"/>
+                        <segue destination="YqO-ni-W1y" kind="relationship" relationship="viewControllers" id="yH2-W6-q61"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GQE-c9-lpv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -220,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t3S-hd-gsW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="377" y="2355"/>
+            <point key="canvasLocation" x="376.81159420289856" y="2354.4642857142858"/>
         </scene>
         <!--UT News-->
         <scene sceneID="sUv-5A-gwT">
@@ -289,8 +272,47 @@
             </objects>
             <point key="canvasLocation" x="1611.5942028985507" y="1603.7946428571429"/>
         </scene>
+        <!--Sublease View Controller-->
+        <scene sceneID="a54-Go-tjk">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cFP-yT-Gcx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="sublease" id="HiY-mF-PYY" customClass="SubleaseViewController" customModule="UTSocial" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="32l-bd-Xu5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sublease" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBy-IE-Z1E">
+                                <rect key="frame" x="81" y="156" width="202" height="226"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="O8w-0i-jY1"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2733" y="748"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9vJ-m3-f3u">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tdx-38-veS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ftp-WH-tu8">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nJk-Yw-haN" kind="relationship" relationship="rootViewController" id="9tR-Im-3aa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E8H-mP-6GI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="377" y="-100"/>
+        </scene>
     </scenes>
-    <resources>
-        <image name="utmenulogo" width="64" height="64"/>
-    </resources>
 </document>
