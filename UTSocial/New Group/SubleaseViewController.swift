@@ -12,9 +12,9 @@ class SubleaseViewController: UIViewController {
     
     let transition = slideInTransition()
     let newViewController = NewsViewController()
-
     
-    //MENU BUTTON OPTIONS
+    
+    //MENU BUTTON OPTIONS -> Slide in Menu
     @IBAction func menuButton(_ sender: Any)
     {
         let storyboard = UIStoryboard(name: "Menu", bundle: nil)
@@ -23,25 +23,25 @@ class SubleaseViewController: UIViewController {
         menuVC.modalPresentationStyle = .overCurrentContext
         menuVC.transitioningDelegate = self
         present(menuVC, animated: true, completion: nil)
-
+        
     }
-    //ADDING A SUBLEASE POST HERE
+    //Add a Post Button -> New View Controller
     @IBAction func addPost(_ sender: Any)
     {
         let storyboard = UIStoryboard(name: "Sublease", bundle: nil)
-        guard let postingVC = storyboard.instantiateViewController(withIdentifier: "postSublease") as? PostSubleaseViewController else {return}
+        guard let postingVC = storyboard.instantiateViewController(withIdentifier: "postSublease") as? AddPostSubleaseViewController else {return}
         present(postingVC, animated: true, completion: nil)
         
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 }
-
+//Neccessary for Slide in Animation
 extension SubleaseViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.menuShowing = true

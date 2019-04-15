@@ -1,5 +1,5 @@
 //
-//  PostsSubleaseTableViewCell.swift
+//  PostCellSubleaseTableViewCell.swift
 //  UTSocial
 //
 //  Created by Maksat Zhazbayev on 4/15/19.
@@ -8,17 +8,17 @@
 
 import UIKit
 
-class PostsSubleaseTableViewCell: UITableViewCell {
-
+class PostCellSubleaseTableViewCell: UITableViewCell {
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }
