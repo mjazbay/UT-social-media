@@ -1,0 +1,6 @@
+framework module Pods_UTSocial {
+  umbrella header "Pods-UTSocial-umbrella.h"
+
+  export *
+  module * { export * }
+}
