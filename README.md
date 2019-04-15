@@ -76,7 +76,7 @@ Optional:
 
 
 ## Wireframes
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/Xieyangxinyu/UT-social-media/blob/master/Wireframe.png" width=600>
 
 ## Schema 
 
