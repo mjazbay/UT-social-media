@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		051B580F226133A9009EDD36 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051B580E226133A9009EDD36 /* ChatViewController.swift */; };
+		051B5811226133BD009EDD36 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051B5810226133BD009EDD36 /* NewsViewController.swift */; };
+		051B5813226133C8009EDD36 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051B5812226133C8009EDD36 /* MapViewController.swift */; };
+		051B58172263E41B009EDD36 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 051B58162263E41B009EDD36 /* Menu.storyboard */; };
 		057D2C6C225709DB00A7300F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057D2C6B225709DB00A7300F /* AppDelegate.swift */; };
 		057D2C71225709DB00A7300F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 057D2C6F225709DB00A7300F /* Main.storyboard */; };
 		057D2C73225709DD00A7300F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 057D2C72225709DD00A7300F /* Assets.xcassets */; };
@@ -16,6 +20,9 @@
 		059F09EA225F96EE00330227 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F09E9225F96EE00330227 /* HomeViewController.swift */; };
 		059F09F0225FD17F00330227 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F09EF225FD17F00330227 /* MenuTableViewController.swift */; };
 		059F09F2225FD3AF00330227 /* slideInTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F09F1225FD3AF00330227 /* slideInTransition.swift */; };
+		059F09F42261305F00330227 /* SubleaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F09F32261305F00330227 /* SubleaseViewController.swift */; };
+		059F09F62261307500330227 /* BuySellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F09F52261307500330227 /* BuySellViewController.swift */; };
+		059F09F82261308100330227 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F09F72261308100330227 /* EventsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		051B580E226133A9009EDD36 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		051B5810226133BD009EDD36 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		051B5812226133C8009EDD36 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		051B58162263E41B009EDD36 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		057D2C68225709DB00A7300F /* UTSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UTSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		057D2C6B225709DB00A7300F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		057D2C70225709DB00A7300F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -51,6 +62,9 @@
 		059F09E9225F96EE00330227 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		059F09EF225FD17F00330227 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuTableViewController.swift; path = ../MenuTableViewController.swift; sourceTree = "<group>"; };
 		059F09F1225FD3AF00330227 /* slideInTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slideInTransition.swift; sourceTree = "<group>"; };
+		059F09F32261305F00330227 /* SubleaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SubleaseViewController.swift; path = "New Group/SubleaseViewController.swift"; sourceTree = "<group>"; };
+		059F09F52261307500330227 /* BuySellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BuySellViewController.swift; path = "New Group/BuySellViewController.swift"; sourceTree = "<group>"; };
+		059F09F72261308100330227 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventsViewController.swift; path = "New Group/EventsViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +92,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		051B580722613287009EDD36 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				059F09EF225FD17F00330227 /* MenuTableViewController.swift */,
+				059F09E9225F96EE00330227 /* HomeViewController.swift */,
+				059F09F32261305F00330227 /* SubleaseViewController.swift */,
+				059F09F72261308100330227 /* EventsViewController.swift */,
+				059F09F52261307500330227 /* BuySellViewController.swift */,
+				059F09F1225FD3AF00330227 /* slideInTransition.swift */,
+				051B58162263E41B009EDD36 /* Menu.storyboard */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		051B5809226132EE009EDD36 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				051B580E226133A9009EDD36 /* ChatViewController.swift */,
+				051B5810226133BD009EDD36 /* NewsViewController.swift */,
+				051B5812226133C8009EDD36 /* MapViewController.swift */,
+			);
+			name = TabBar;
+			sourceTree = "<group>";
+		};
 		057D2C5F225709DB00A7300F = {
 			isa = PBXGroup;
 			children = (
@@ -101,13 +139,12 @@
 		057D2C6A225709DB00A7300F /* UTSocial */ = {
 			isa = PBXGroup;
 			children = (
-				057D2C6B225709DB00A7300F /* AppDelegate.swift */,
-				059F09EF225FD17F00330227 /* MenuTableViewController.swift */,
-				059F09F1225FD3AF00330227 /* slideInTransition.swift */,
-				059F09E9225F96EE00330227 /* HomeViewController.swift */,
+				051B580722613287009EDD36 /* Menu */,
+				051B5809226132EE009EDD36 /* TabBar */,
 				057D2C6F225709DB00A7300F /* Main.storyboard */,
-				057D2C72225709DD00A7300F /* Assets.xcassets */,
 				057D2C74225709DD00A7300F /* LaunchScreen.storyboard */,
+				057D2C72225709DD00A7300F /* Assets.xcassets */,
+				057D2C6B225709DB00A7300F /* AppDelegate.swift */,
 				057D2C77225709DD00A7300F /* Info.plist */,
 			);
 			path = UTSocial;
@@ -238,6 +275,7 @@
 				057D2C76225709DD00A7300F /* LaunchScreen.storyboard in Resources */,
 				057D2C73225709DD00A7300F /* Assets.xcassets in Resources */,
 				057D2C71225709DB00A7300F /* Main.storyboard in Resources */,
+				051B58172263E41B009EDD36 /* Menu.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,9 +301,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				059F09F0225FD17F00330227 /* MenuTableViewController.swift in Sources */,
+				059F09F62261307500330227 /* BuySellViewController.swift in Sources */,
 				059F09F2225FD3AF00330227 /* slideInTransition.swift in Sources */,
+				051B5813226133C8009EDD36 /* MapViewController.swift in Sources */,
 				057D2C6C225709DB00A7300F /* AppDelegate.swift in Sources */,
+				059F09F82261308100330227 /* EventsViewController.swift in Sources */,
 				059F09EA225F96EE00330227 /* HomeViewController.swift in Sources */,
+				051B5811226133BD009EDD36 /* NewsViewController.swift in Sources */,
+				051B580F226133A9009EDD36 /* ChatViewController.swift in Sources */,
+				059F09F42261305F00330227 /* SubleaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
