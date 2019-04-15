@@ -23,6 +23,14 @@ class SubleaseViewController: UIViewController {
 
     }
     
+    @IBAction func addPost(_ sender: Any)
+    {
+        let storyboard = UIStoryboard(name: "Menu", bundle: nil)
+        guard let postingVC = storyboard.instantiateViewController(withIdentifier: "postSublease") as? PostSubleaseViewController else {return}
+        present(postingVC, animated: true, completion: nil)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

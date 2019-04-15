@@ -13,13 +13,13 @@ class HomeViewController: UITabBarController {
     
     @IBAction func menuButton(_ sender: Any)
     {
+        // Setting Up Slide In Menu Option
         let storyboard = UIStoryboard(name: "Menu", bundle: nil)
         guard let menuVC = storyboard.instantiateViewController(withIdentifier: "menuVC") as? MenuTableViewController else {return}
         
         menuVC.modalPresentationStyle = .overCurrentContext
         menuVC.transitioningDelegate = self
         present(menuVC, animated: true, completion: nil)
-        
     }
     
     

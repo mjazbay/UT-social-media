@@ -11,6 +11,7 @@
 		051B5811226133BD009EDD36 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051B5810226133BD009EDD36 /* NewsViewController.swift */; };
 		051B5813226133C8009EDD36 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051B5812226133C8009EDD36 /* MapViewController.swift */; };
 		051B58172263E41B009EDD36 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 051B58162263E41B009EDD36 /* Menu.storyboard */; };
+		051B581922644F9D009EDD36 /* PostSubleaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051B581822644F9D009EDD36 /* PostSubleaseViewController.swift */; };
 		057D2C6C225709DB00A7300F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057D2C6B225709DB00A7300F /* AppDelegate.swift */; };
 		057D2C71225709DB00A7300F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 057D2C6F225709DB00A7300F /* Main.storyboard */; };
 		057D2C73225709DD00A7300F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 057D2C72225709DD00A7300F /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		051B5810226133BD009EDD36 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		051B5812226133C8009EDD36 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		051B58162263E41B009EDD36 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
+		051B581822644F9D009EDD36 /* PostSubleaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSubleaseViewController.swift; sourceTree = "<group>"; };
 		057D2C68225709DB00A7300F /* UTSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UTSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		057D2C6B225709DB00A7300F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		057D2C70225709DB00A7300F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				059F09EF225FD17F00330227 /* MenuTableViewController.swift */,
 				059F09E9225F96EE00330227 /* HomeViewController.swift */,
 				059F09F32261305F00330227 /* SubleaseViewController.swift */,
+				051B581822644F9D009EDD36 /* PostSubleaseViewController.swift */,
 				059F09F72261308100330227 /* EventsViewController.swift */,
 				059F09F52261307500330227 /* BuySellViewController.swift */,
 				059F09F1225FD3AF00330227 /* slideInTransition.swift */,
@@ -303,6 +306,7 @@
 				059F09F0225FD17F00330227 /* MenuTableViewController.swift in Sources */,
 				059F09F62261307500330227 /* BuySellViewController.swift in Sources */,
 				059F09F2225FD3AF00330227 /* slideInTransition.swift in Sources */,
+				051B581922644F9D009EDD36 /* PostSubleaseViewController.swift in Sources */,
 				051B5813226133C8009EDD36 /* MapViewController.swift in Sources */,
 				057D2C6C225709DB00A7300F /* AppDelegate.swift in Sources */,
 				059F09F82261308100330227 /* EventsViewController.swift in Sources */,
