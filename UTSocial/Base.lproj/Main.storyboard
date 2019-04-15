@@ -51,7 +51,8 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="nJk-Yw-haN" customClass="HomeViewController" customModule="UTSocial" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="fWw-Nm-7Ch">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="IsI-HZ-x9M">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" image="utmenulogo" id="IsI-HZ-x9M">
+                            <color key="tintColor" red="1" green="0.43141289230000002" blue="0.3314703558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="menuButton:" destination="nJk-Yw-haN" id="kcg-Uy-s2j"/>
                             </connections>
@@ -174,4 +175,7 @@
             <point key="canvasLocation" x="377" y="-100"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="utmenulogo" width="64" height="64"/>
+    </resources>
 </document>

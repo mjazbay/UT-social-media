@@ -24,8 +24,8 @@ class MenuTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let menuType = MenuType(rawValue: indexPath.row)
         //dismiss(animated: true, completion: nil)
-        
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "sublease") as? SubleaseViewController {
+        let storyboard = UIStoryboard(name: "Sublease", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "sublease") as? SubleaseViewController {
             present(vc, animated: true, completion: nil)
         }
     }
