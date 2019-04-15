@@ -1,16 +1,17 @@
 //
-//  HomeViewController.swift
+//  SubleaseViewController.swift
 //  UTSocial
 //
-//  Created by Maksat Zhazbayev on 4/11/19.
+//  Created by Maksat Zhazbayev on 4/12/19.
 //  Copyright © 2019 Maksat Zhazbayev. All rights reserved.
 //
 
 import UIKit
 
-class HomeViewController: UITabBarController {
-    let transition = slideInTransition()
+class SubleaseViewController: UIViewController {
     
+    let transition = slideInTransition()
+
     @IBAction func menuButton(_ sender: Any)
     {
         let storyboard = UIStoryboard(name: "Menu", bundle: nil)
@@ -19,9 +20,8 @@ class HomeViewController: UITabBarController {
         menuVC.modalPresentationStyle = .overCurrentContext
         menuVC.transitioningDelegate = self
         present(menuVC, animated: true, completion: nil)
-        
+
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,8 @@ class HomeViewController: UITabBarController {
         // Do any additional setup after loading the view.
     }
 }
-extension HomeViewController: UIViewControllerTransitioningDelegate {
+
+extension SubleaseViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.menuShowing = true
         return transition
