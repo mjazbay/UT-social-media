@@ -9,6 +9,13 @@
 import UIKit
 
 class PostCellSubleaseTableViewCell: UITableViewCell {
+    // my constants
+    
+    @IBOutlet weak var mainPosterImageView: UIImageView!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
