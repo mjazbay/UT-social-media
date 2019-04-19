@@ -25,12 +25,13 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
     {
         let storyboard = UIStoryboard(name: "Menu", bundle: nil)
         guard let menuVC = storyboard.instantiateViewController(withIdentifier: "menuVC") as? MenuTableViewController else {return}
-        
-        menuVC.modalPresentationStyle = .overCurrentContext
-        menuVC.transitioningDelegate = self
-        present(menuVC, animated: true, completion: nil)
-        
+    
+        let navController = UINavigationController(rootViewController: menuVC)
+        navController.modalPresentationStyle = .overCurrentContext
+        navController.transitioningDelegate = self
+        present(navController, animated: true, completion: nil)
     }
+    
     //Add a Post Button -> New View Controller
     @IBAction func addPost(_ sender: Any)
     {

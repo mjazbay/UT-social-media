@@ -29,4 +29,11 @@ class MenuTableViewController: UITableViewController {
             present(vc, animated: true, completion: nil)
         }
     }
+    
+    @IBAction func dismissMenu(_ sender: Any)
+    {
+        dismiss(animated: true, completion: nil)
+    }
+    
+//end of class
 }

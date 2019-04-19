@@ -90,13 +90,13 @@ class AddPostSubleaseViewController: UIViewController, UIImagePickerControllerDe
     }
     
     
-    //Description gets cleared upon editing it.
+                        //Description gets cleared upon editing it.
     func textViewDidBeginEditing(_ textView: UITextView)
     {
         //show keyboard
         descriptionTextView.becomeFirstResponder()
 
-        if descriptionTextView.textColor == UIColor.lightGray
+        if descriptionTextView.text == placeHolder
         {
             descriptionTextView.textColor = UIColor.black
             descriptionTextView.text = String()
@@ -107,10 +107,10 @@ class AddPostSubleaseViewController: UIViewController, UIImagePickerControllerDe
         if descriptionTextView.text.isEmpty
         {
             descriptionTextView.textColor = UIColor.lightGray
-            descriptionTextView.text = "Hi there, I am subleasing my place for Fall 2019"
+            descriptionTextView.text = placeHolder
         }
     }
-    
+                    //Price and Address Text Fields Being cleaned upon edition
     func textFieldDidBeginEditing(_ textField: UITextField)
     {
         if (textField == priceTextField)
@@ -159,21 +159,37 @@ class AddPostSubleaseViewController: UIViewController, UIImagePickerControllerDe
             addressTextField.backgroundColor = UIColor.red
             self.anythingEmpty = true
         }
-        else if priceTextField.text!.isEmpty
+        else
+        {
+            addressTextField.backgroundColor = UIColor.white
+        }
+        if priceTextField.text!.isEmpty
         {
             priceTextField.backgroundColor = UIColor.red
             self.anythingEmpty = true
         }
-        else if descriptionTextView.text == self.placeHolder
+        else
+        {
+            priceTextField.backgroundColor = UIColor.white
+        }
+        if descriptionTextView.text == self.placeHolder
         {
             descriptionTextView.textColor = UIColor.black
             descriptionTextView.backgroundColor = UIColor.red
             self.anythingEmpty = true
         }
-        else if defaultPicture.image == #imageLiteral(resourceName: "defaultPicture")
+        else
+        {
+            descriptionTextView.backgroundColor = UIColor.white
+        }
+        if defaultPicture.image == #imageLiteral(resourceName: "defaultPicture")
         {
             defaultPicture.backgroundColor = UIColor.red
             self.anythingEmpty = true
+        }
+        else
+        {
+            defaultPicture.backgroundColor = UIColor.white
         }
         reloadInputViews()
     }

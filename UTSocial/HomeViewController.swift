@@ -10,16 +10,25 @@ import UIKit
 
 class HomeViewController: UITabBarController {
     let transition = slideInTransition()
+    var menuCount: Int = 1
     
     @IBAction func menuButton(_ sender: Any)
     {
         // Setting Up Slide In Menu Option
         let storyboard = UIStoryboard(name: "Menu", bundle: nil)
         guard let menuVC = storyboard.instantiateViewController(withIdentifier: "menuVC") as? MenuTableViewController else {return}
-        
+
         menuVC.modalPresentationStyle = .overCurrentContext
         menuVC.transitioningDelegate = self
-        present(menuVC, animated: true, completion: nil)
+        menuCount += 1
+        if menuCount % 2 == 0
+        {
+            present(menuVC, animated: true, completion: nil)
+        }
+        else
+        {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     

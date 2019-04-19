@@ -121,10 +121,39 @@
                             <outlet property="delegate" destination="yda-kz-Bbk" id="2lF-0M-zhu"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="vq8-kC-oDk">
+                        <barButtonItem key="leftBarButtonItem" image="utmenulogo" id="blz-Bt-Zvo">
+                            <color key="tintColor" red="1" green="0.43141289230000002" blue="0.3314703558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="dismissMenu:" destination="yda-kz-Bbk" id="UWS-Qu-9HW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vwx-z4-oSY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-293" y="-994"/>
+            <point key="canvasLocation" x="615.94202898550725" y="-994.41964285714278"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vvG-8h-oet">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="M4q-2c-Rto" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eTY-tV-nbe">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yda-kz-Bbk" kind="relationship" relationship="rootViewController" id="O0o-Eu-I4x"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5JG-UN-DgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-294.20289855072468" y="-994.41964285714278"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="utmenulogo" width="64" height="64"/>
+    </resources>
 </document>
