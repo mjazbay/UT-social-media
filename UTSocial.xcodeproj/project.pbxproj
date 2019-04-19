@@ -26,6 +26,7 @@
 		059F09F42261305F00330227 /* SubleaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F09F32261305F00330227 /* SubleaseViewController.swift */; };
 		059F09F62261307500330227 /* BuySellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F09F52261307500330227 /* BuySellViewController.swift */; };
 		059F09F82261308100330227 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F09F72261308100330227 /* EventsViewController.swift */; };
+		05A4D5E422684648002E58E7 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4D5E322684648002E58E7 /* PostViewController.swift */; };
 		8481A432E0AC02E67388B49F /* Pods_UTSocial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5769A988E72F46EE9F5F70 /* Pods_UTSocial.framework */; };
 		915F976C64ADA46774CBD056 /* Pods_UTSocialUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E736CD2B59166CDDA5F57D11 /* Pods_UTSocialUITests.framework */; };
 		EA04EC182265436E000CAC19 /* Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA04EC172265436E000CAC19 /* Events.storyboard */; };
@@ -75,6 +76,7 @@
 		059F09F32261305F00330227 /* SubleaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SubleaseViewController.swift; path = "New Group/SubleaseViewController.swift"; sourceTree = "<group>"; };
 		059F09F52261307500330227 /* BuySellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BuySellViewController.swift; path = "New Group/BuySellViewController.swift"; sourceTree = "<group>"; };
 		059F09F72261308100330227 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventsViewController.swift; path = "New Group/EventsViewController.swift"; sourceTree = "<group>"; };
+		05A4D5E322684648002E58E7 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		3AC6A6284D1887A35E77F971 /* Pods-UTSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UTSocial.release.xcconfig"; path = "Pods/Target Support Files/Pods-UTSocial/Pods-UTSocial.release.xcconfig"; sourceTree = "<group>"; };
 		4A5769A988E72F46EE9F5F70 /* Pods_UTSocial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UTSocial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A188FE5C8F59175F55FF5130 /* Pods-UTSocialUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UTSocialUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UTSocialUITests/Pods-UTSocialUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				059F09F32261305F00330227 /* SubleaseViewController.swift */,
 				051B581822644F9D009EDD36 /* AddPostSubleaseViewController.swift */,
 				051B581B22650BE6009EDD36 /* PostCellSubleaseTableViewCell.swift */,
+				05A4D5E322684648002E58E7 /* PostViewController.swift */,
 				051B581D22650C15009EDD36 /* Sublease.storyboard */,
 			);
 			name = Sublease;
@@ -476,6 +479,7 @@
 				059F09F0225FD17F00330227 /* MenuTableViewController.swift in Sources */,
 				059F09F62261307500330227 /* BuySellViewController.swift in Sources */,
 				059F09F2225FD3AF00330227 /* slideInTransition.swift in Sources */,
+				05A4D5E422684648002E58E7 /* PostViewController.swift in Sources */,
 				051B581922644F9D009EDD36 /* AddPostSubleaseViewController.swift in Sources */,
 				051B5813226133C8009EDD36 /* MapViewController.swift in Sources */,
 				057D2C6C225709DB00A7300F /* AppDelegate.swift in Sources */,

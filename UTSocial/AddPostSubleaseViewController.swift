@@ -19,6 +19,8 @@ class AddPostSubleaseViewController: UIViewController, UIImagePickerControllerDe
     @IBOutlet weak var descriptionTextView: UITextView!
     
     var anythingEmpty = false
+    let placeHolder: String = "Hi there, I am subleasing my place for Fall 2019"
+
     
     //Tap Camera Gesture to Open Camera or Gallery Library
     @IBAction func cameraTapGesture(_ sender: UITapGestureRecognizer)
@@ -89,14 +91,19 @@ class AddPostSubleaseViewController: UIViewController, UIImagePickerControllerDe
     
     
     //Description gets cleared upon editing it.
-    func textViewDidBeginEditing(_ textView: UITextView) {
+    func textViewDidBeginEditing(_ textView: UITextView)
+    {
+        //show keyboard
+        descriptionTextView.becomeFirstResponder()
+
         if descriptionTextView.textColor == UIColor.lightGray
         {
             descriptionTextView.textColor = UIColor.black
             descriptionTextView.text = String()
         }
     }
-    func textViewDidEndEditing(_ textView: UITextView) {
+    func textViewDidEndEditing(_ textView: UITextView)
+    {
         if descriptionTextView.text.isEmpty
         {
             descriptionTextView.textColor = UIColor.lightGray
@@ -104,13 +111,37 @@ class AddPostSubleaseViewController: UIViewController, UIImagePickerControllerDe
         }
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if (textField == priceTextField) || (textField == addressTextField ) {
+    func textFieldDidBeginEditing(_ textField: UITextField)
+    {
+        if (textField == priceTextField)
+        {
+            //show keyboard
+            priceTextField.becomeFirstResponder()
+            textField.text = String("$")
+        }
+        else if (textField == addressTextField )
+        {
+            //show keyboard
+            addressTextField.becomeFirstResponder()
             textField.text = String()
         }
     }
+                    //Price Text Field only Accepts Integer Values
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    {
+        if textField == priceTextField
+        {
+            let allowedCharacters = CharacterSet(charactersIn: "$0123456789")
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedCharacters.isSuperset(of: characterSet)
+        }
+        return true
+    }
     
-    override func viewDidLoad() {
+
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         self.descriptionTextView.delegate = self
         self.priceTextField.delegate = self
@@ -133,9 +164,15 @@ class AddPostSubleaseViewController: UIViewController, UIImagePickerControllerDe
             priceTextField.backgroundColor = UIColor.red
             self.anythingEmpty = true
         }
-        else if descriptionTextView.text!.isEmpty
+        else if descriptionTextView.text == self.placeHolder
         {
+            descriptionTextView.textColor = UIColor.black
             descriptionTextView.backgroundColor = UIColor.red
+            self.anythingEmpty = true
+        }
+        else if defaultPicture.image == #imageLiteral(resourceName: "defaultPicture")
+        {
+            defaultPicture.backgroundColor = UIColor.red
             self.anythingEmpty = true
         }
         reloadInputViews()
@@ -144,19 +181,25 @@ class AddPostSubleaseViewController: UIViewController, UIImagePickerControllerDe
     //Original looks of text fields
     func defaultTextFormat()
     {
-        //Description Format
+        //Image Format
+        //defaultPicture.image = UIImage(named: "defaultPicture")
+        defaultPicture.image = #imageLiteral(resourceName: "defaultPicture")
+            
+        //Description Format //making textView look as textField
         descriptionTextView.textColor = UIColor.lightGray
-        descriptionTextView.text = "Hi there, I am subleasing my place for Fall 2019"
+        descriptionTextView.text = self.placeHolder
         self.descriptionTextView.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
         self.descriptionTextView.layer.borderWidth = 1.0
         self.descriptionTextView.layer.cornerRadius = 5
     
         //Price Format
         self.priceTextField.keyboardType = .numbersAndPunctuation
+        self.priceTextField.text = String()
         self.priceTextField.placeholder = "$1000"
         
         
         //Address Format
+        self.addressTextField.text = String()
         self.addressTextField.placeholder = "600 W 26th Street, 78705"
     }
 }

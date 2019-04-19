@@ -16,6 +16,7 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
     let transition = slideInTransition()
     let newViewController = NewsViewController()
     var posts = [PFObject]()
+    let myRefreshControl = UIRefreshControl()
     
     @IBOutlet weak var mainTableView: UITableView!
     
@@ -39,7 +40,7 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
-    func queryData()
+    @objc func queryData()
     {
         let query = PFQuery(className: "Sublease")
         query.order(byDescending: "createdAt")
@@ -50,6 +51,7 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
             {
                 self.posts = posts!
                 self.mainTableView.reloadData()
+                self.myRefreshControl.endRefreshing()
             }
         }
     }
@@ -61,7 +63,9 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         // Do any additional setup after loading the view.
-        //self.queryData()
+        
+        myRefreshControl.addTarget(self, action: #selector(queryData), for: .valueChanged)
+        mainTableView.refreshControl = myRefreshControl
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -93,6 +97,14 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
         cell.mainPosterImageView.af_setImage(withURL: url)
         
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let storyboard = UIStoryboard(name: "Sublease", bundle: nil)
+        if let vcTransitionTo = storyboard.instantiateViewController(withIdentifier: "postVC") as? PostViewController
+        {
+        present(vcTransitionTo, animated: true, completion: nil)
+        }
     }
     
 }
