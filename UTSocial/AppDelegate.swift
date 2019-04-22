@@ -26,6 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
         )
         
+        //programmatically creating view controller for buy and sell
+        //create window for window property
+        //UIWindow where all VC and Views will appear
+//        window = UIWindow(frame: UIScreen.main.bounds)
+        //create instance of VC
+//        let buySellVC = BuySellViewController()
+//        buySellVC.view.backgroundColor = UIColor.black
+//        window?.makeKeyAndVisible()
+        
         // Override point for customization after application launch.
         return true
     }
