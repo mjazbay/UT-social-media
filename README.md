@@ -29,9 +29,9 @@ Orange brings UT students together to do more of what they want to do in life. O
 
 * User can sign up to create a new account.
 * User can log in/out.
-* User can upload a poster, add a caption, a description and post it to the server.
-* User can view the latest 20 posts.
-* User can pull to refresh.
+* [x] User can upload a poster, add a caption, a description and post it to the server.
+* [x] User can view the latest 20 posts.
+* [x] User can pull to refresh.
 * User can share events.
 * User can tap a cell to see more details about a particular event.
 * User can add a profile picture.
@@ -51,6 +51,7 @@ Orange brings UT students together to do more of what they want to do in life. O
 * Event Feed Screen - 2 parts
 * Allow user to view and share upcoming events they may be interested in
 * Allow user to view details of the events they are going
+* <img src='https://github.com/mzhazbay/UT-social-media/blob/master/Video%20Walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 * Event Upload Screen
 * Allow user to upload a poster, add a caption and fill in descriptions(location, time, tags, ...) of an event.
 
