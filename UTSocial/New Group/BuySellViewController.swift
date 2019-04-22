@@ -45,15 +45,15 @@ class BuySellViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.priceLabel.text = "$10000"
         cell.posterImage.image = UIImage(imageLiteralResourceName: "defaultPicture")
         cell.descriptionLabel.text = "Hi there, I am selling this photoapparat!, Address: 600 w 26th St for pick up!!"
-
+        cell.titlelabel.text = "13 Apple MacBook Air 1.8Ghz Core i5"
+        
         return cell
     }
-    //configuring each row's HEIGHT
+//    //configuring each row's HEIGHT
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        mainTableView.rowHeight = UITableView.automaticDimension
-        mainTableView.estimatedRowHeight = 100
-        return mainTableView.estimatedRowHeight
-        
+//        mainTableView.rowHeight = UITableView.automaticDimension
+        return 200//mainTableView.estimatedRowHeight
+
     }
     
     
