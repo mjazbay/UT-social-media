@@ -7,12 +7,30 @@
 //
 
 import UIKit
+import Parse
+import AlamofireImage
 
 class EventDetailViewController: UIViewController {
 
+    var post = PFObject(className: "eventPost")
+    
+    @IBOutlet weak var detailPoster: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        titleLabel.text = post["Title"] as? String
+        timeLabel.text = post["Time"] as? String
+        descriptionLabel.text = post["Description"] as? String
+        
+        let imageFile = post["Poster"] as! PFFileObject
+        let urlString = imageFile.url!
+        let url = URL(string: urlString)!
+        
+        detailPoster.af_setImage(withURL: url)
         // Do any additional setup after loading the view.
     }
     

@@ -65,7 +65,20 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let url = URL(string: urlString)!
         
         cell.PosterView.af_setImage(withURL: url)
-        print(cell as Any)
         return cell
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if (sender is UITableViewCell){
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPath(for: cell)!
+            let post = posts[indexPath.row]
+            
+            //Pass the selected movie to destination
+            let detailsViewController = segue.destination as! EventDetailViewController
+            detailsViewController.post = post
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
 }
