@@ -56,5 +56,9 @@ class BuySellViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
     
 }

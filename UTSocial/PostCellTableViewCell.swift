@@ -62,11 +62,12 @@ class PostCellTableViewCell: UITableViewCell {
         //        Description Text Formation
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.numberOfLines = 0
-        descriptionLabel.
+        descriptionLabel.textAlignment = .left
         descriptionLabel.leadingAnchor.constraint(equalTo: posterImage.trailingAnchor, constant: 10).isActive = true
         descriptionLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10).isActive = true
-        descriptionLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 10).isActive = true
+//        descriptionLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 10).isActive = true
         descriptionLabel.topAnchor.constraint(equalTo: titlelabel.bottomAnchor,constant: 10).isActive = true
+        //look up insets
         
         
         
