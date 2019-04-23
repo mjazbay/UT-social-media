@@ -37,7 +37,9 @@ class HomeViewController: UITabBarController {
 
         // Do any additional setup after loading the view.
     }
+//end of class
 }
+//extensions for slide in Menu
 extension HomeViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.menuShowing = true

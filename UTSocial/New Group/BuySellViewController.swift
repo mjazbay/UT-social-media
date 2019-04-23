@@ -11,6 +11,19 @@ import UIKit
 class BuySellViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var mainTableView: UITableView = UITableView()
+    let transition = slideInTransition()
+
+
+
+    @objc func menuShowUp()
+    {
+        let storyboard = UIStoryboard(name: "Menu", bundle: nil)
+        guard let menuVC = storyboard.instantiateViewController(withIdentifier: "menuVC") as? MenuTableViewController else {return}
+        let navController = UINavigationController(rootViewController: menuVC)
+        navController.modalPresentationStyle = .overCurrentContext
+        navController.transitioningDelegate = self
+        present(navController, animated: true, completion: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +46,19 @@ class BuySellViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .white
         self.view.addSubview(mainTableView)
+        
+        //menu button configuration
+        let menuButton = UIBarButtonItem(image: #imageLiteral(resourceName: "utmenulogo"), style: .plain, target: self, action: #selector(BuySellViewController.menuShowUp))
+        self.navigationItem.leftBarButtonItem = menuButton
+        menuButton.tintColor = UIColor.orange
+        
+        //add post button configuration
+        let addPostButton = UIBarButtonItem()
+        addPostButton.style = .plain
+        addPostButton.title = "Add Post"
+        addPostButton.tintColor = .orange
+//        addPostButton.title.
+        self.navigationItem.rightBarButtonItem = addPostButton
     }
     
     
@@ -60,5 +86,16 @@ class BuySellViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
-    
+ //class ends here
+}
+//extension for slide in menu
+extension BuySellViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.menuShowing = true
+        return transition
+    }
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.menuShowing = false
+        return transition
+    }
 }

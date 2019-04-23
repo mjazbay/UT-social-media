@@ -37,36 +37,39 @@ class PostCellTableViewCell: UITableViewCell {
     
     func defaultFormat()
     {
-        //        Poster Pic Formation
-        posterImage.translatesAutoresizingMaskIntoConstraints = false
-        posterImage.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-        posterImage.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
-        posterImage.trailingAnchor.constraint(equalTo: titlelabel.leadingAnchor, constant: -10).isActive = true
-        posterImage.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-        posterImage.widthAnchor.constraint(equalToConstant: 100)
-        
         //        Title Label Formation
+        titlelabel.font = UIFont.boldSystemFont(ofSize: descriptionLabel.font.pointSize + 2)
         titlelabel.translatesAutoresizingMaskIntoConstraints = false
-        titlelabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10).isActive = true
-        titlelabel.leadingAnchor.constraint(equalTo: posterImage.trailingAnchor, constant: 10).isActive = true
+        titlelabel.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
+        titlelabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10).isActive = true
         titlelabel.trailingAnchor.constraint(equalTo: priceLabel.leadingAnchor, constant: -10).isActive = true
-//        titlelabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: 10).isActive = true
-        
+        titlelabel.heightAnchor.constraint(equalTo: priceLabel.heightAnchor).isActive = true
+
         //         Price Label Formation
+        priceLabel.font = UIFont.boldSystemFont(ofSize: descriptionLabel.font.pointSize + 2)
+        priceLabel.textColor = .red
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         priceLabel.numberOfLines = 0
-        priceLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10).isActive = true
+        priceLabel.textAlignment = .right
+        priceLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
         priceLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10).isActive = true
-//        priceLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: 10).isActive = true
+
+        //        Poster Pic Formation
+        posterImage.translatesAutoresizingMaskIntoConstraints = false
+        posterImage.topAnchor.constraint(equalTo: titlelabel.bottomAnchor, constant: 10).isActive = true
+        posterImage.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant:  10).isActive = true
+        posterImage.trailingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor, constant: -10).isActive = true
+        posterImage.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
+        posterImage.widthAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.widthAnchor).isActive = true
         
         //        Description Text Formation
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.numberOfLines = 0
         descriptionLabel.textAlignment = .left
-        descriptionLabel.leadingAnchor.constraint(equalTo: posterImage.trailingAnchor, constant: 10).isActive = true
+        descriptionLabel.topAnchor.constraint(equalTo: titlelabel.bottomAnchor, constant: 10).isActive = true
         descriptionLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10).isActive = true
-//        descriptionLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 10).isActive = true
-        descriptionLabel.topAnchor.constraint(equalTo: titlelabel.bottomAnchor,constant: 10).isActive = true
+        descriptionLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
+
         //look up insets
         
         
