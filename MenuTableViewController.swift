@@ -31,7 +31,9 @@ class MenuTableViewController: UITableViewController {
             }
         case .buy:
             let buySellVC = BuySellViewController()
-            present(buySellVC, animated: true, completion: nil)
+            let navController = UINavigationController(rootViewController: buySellVC)
+            present(navController, animated: true, completion: nil)
+       
         case .events:
             let EventsStoryboard = UIStoryboard(name: "Events", bundle: nil)
             if let vc = EventsStoryboard.instantiateViewController(withIdentifier: "events") as? EventsViewController {

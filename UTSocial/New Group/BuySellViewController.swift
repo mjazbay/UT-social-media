@@ -24,6 +24,12 @@ class BuySellViewController: UIViewController, UITableViewDelegate, UITableViewD
         navController.transitioningDelegate = self
         present(navController, animated: true, completion: nil)
     }
+    
+    @objc func addPost()
+    {
+        let addPostVC = AddPostBuySellViewController()
+        self.navigationController?.pushViewController(addPostVC, animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +42,6 @@ class BuySellViewController: UIViewController, UITableViewDelegate, UITableViewD
         let screenHeight = screenSize.height
         
         mainTableView.frame = CGRect(x: 0, y: 0, width: screendWidth, height: screenHeight)
-//        mainTableView.rowHeight = UITableView.automaticDimension
-//        mainTableView.estimatedRowHeight = 100
         
         mainTableView.delegate = self
         mainTableView.dataSource = self
@@ -57,7 +61,9 @@ class BuySellViewController: UIViewController, UITableViewDelegate, UITableViewD
         addPostButton.style = .plain
         addPostButton.title = "Add Post"
         addPostButton.tintColor = .orange
-//        addPostButton.title.
+        addPostButton.target = self
+        addPostButton.action = #selector(addPost)
+    
         self.navigationItem.rightBarButtonItem = addPostButton
     }
     
@@ -77,9 +83,7 @@ class BuySellViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 //    //configuring each row's HEIGHT
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        mainTableView.rowHeight = UITableView.automaticDimension
-        return 200//mainTableView.estimatedRowHeight
-
+        return 200
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
