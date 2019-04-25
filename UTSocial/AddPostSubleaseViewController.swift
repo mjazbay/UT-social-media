@@ -172,7 +172,7 @@ class AddPostSubleaseViewController: UIViewController, UIImagePickerControllerDe
         {
             priceTextField.backgroundColor = UIColor.white
         }
-        if descriptionTextView.text == self.placeHolder
+        if descriptionTextView.text == self.placeHolder || descriptionTextView.text.isEmpty
         {
             descriptionTextView.textColor = UIColor.black
             descriptionTextView.backgroundColor = UIColor.red
