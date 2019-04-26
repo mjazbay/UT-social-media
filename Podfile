@@ -9,6 +9,7 @@ target 'UTSocial' do
   pod "Parse"
   pod "AlamofireImage"
   pod "MessageInputBar"
+  pod 'DKImagePickerController'
 
   target 'UTSocialTests' do
     inherit! :search_paths

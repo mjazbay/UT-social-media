@@ -3,6 +3,51 @@ PODS:
   - AlamofireImage (3.5.0):
     - Alamofire (~> 4.8)
   - Bolts/Tasks (1.9.0)
+  - DKCamera (1.6.4)
+  - DKImagePickerController (4.1.2):
+    - DKImagePickerController/Camera (= 4.1.2)
+    - DKImagePickerController/Core (= 4.1.2)
+    - DKImagePickerController/ImageDataManager (= 4.1.2)
+    - DKImagePickerController/InlineCamera (= 4.1.2)
+    - DKImagePickerController/PhotoEditor (= 4.1.2)
+    - DKImagePickerController/PhotoGallery (= 4.1.2)
+    - DKImagePickerController/Resource (= 4.1.2)
+  - DKImagePickerController/Camera (4.1.2):
+    - DKCamera
+    - DKImagePickerController/Core
+  - DKImagePickerController/Core (4.1.2):
+    - DKImagePickerController/ImageDataManager
+    - DKImagePickerController/Resource
+  - DKImagePickerController/ImageDataManager (4.1.2)
+  - DKImagePickerController/InlineCamera (4.1.2):
+    - DKCamera
+    - DKImagePickerController/Core
+  - DKImagePickerController/PhotoEditor (4.1.2):
+    - DKImagePickerController/Core
+    - TOCropViewController (~> 2.4)
+  - DKImagePickerController/PhotoGallery (4.1.2):
+    - DKImagePickerController/Core
+    - DKPhotoGallery
+  - DKImagePickerController/Resource (4.1.2)
+  - DKPhotoGallery (0.0.11):
+    - DKPhotoGallery/Core (= 0.0.11)
+    - DKPhotoGallery/Model (= 0.0.11)
+    - DKPhotoGallery/Preview (= 0.0.11)
+    - DKPhotoGallery/Resource (= 0.0.11)
+    - SDWebImage/GIF
+  - DKPhotoGallery/Core (0.0.11):
+    - DKPhotoGallery/Model
+    - DKPhotoGallery/Preview
+    - SDWebImage/GIF
+  - DKPhotoGallery/Model (0.0.11):
+    - SDWebImage/GIF
+  - DKPhotoGallery/Preview (0.0.11):
+    - DKPhotoGallery/Model
+    - DKPhotoGallery/Resource
+    - SDWebImage/GIF
+  - DKPhotoGallery/Resource (0.0.11):
+    - SDWebImage/GIF
+  - FLAnimatedImage (1.0.12)
   - MessageInputBar (0.4.1):
     - MessageInputBar/Core (= 0.4.1)
   - MessageInputBar/Core (0.4.1)
@@ -10,9 +55,15 @@ PODS:
     - Parse/Core (= 1.17.2)
   - Parse/Core (1.17.2):
     - Bolts/Tasks (~> 1.9)
+  - SDWebImage/Core (4.4.5)
+  - SDWebImage/GIF (4.4.5):
+    - FLAnimatedImage (~> 1.0)
+    - SDWebImage/Core
+  - TOCropViewController (2.4.0)
 
 DEPENDENCIES:
   - AlamofireImage
+  - DKImagePickerController
   - MessageInputBar
   - Parse
 
@@ -21,16 +72,28 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - Bolts
+    - DKCamera
+    - DKImagePickerController
+    - DKPhotoGallery
+    - FLAnimatedImage
     - MessageInputBar
     - Parse
+    - SDWebImage
+    - TOCropViewController
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  DKCamera: 61fa47629a39354e5111bca1fe96695de020dcb9
+  DKImagePickerController: 358ebcd5ce87db8863ec4b8dea651c67baca36e0
+  DKPhotoGallery: e5fc53899345c26af4374503dd249caabac7d26a
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
   Parse: 3b31a3dd1777b07ee7f0caee32fafbff544483a5
+  SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
+  TOCropViewController: 368d8df3ea43b62c3dc5a61f11b9048274d240bd
 
-PODFILE CHECKSUM: 1c207c52e9098f546c2e1a305971514245a2ef42
+PODFILE CHECKSUM: 780405b4cf84a4d932a86b42436c6f91d23b786f
 
 COCOAPODS: 1.5.3

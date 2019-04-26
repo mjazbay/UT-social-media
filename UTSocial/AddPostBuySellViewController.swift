@@ -9,8 +9,9 @@
 import UIKit
 import AlamofireImage
 import Parse
+import DKImagePickerController
 
-class AddPostBuySellViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
+class AddPostBuySellViewController: UIViewController, UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate {
 
     var defaultImage = UIImageView()
     var postButton = UIBarButtonItem()
@@ -20,7 +21,11 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
     var descriptionLabel = UILabel()
     let placeHolder = "Hi there, I am selling my school supplies."
     var anythingEmpty = true
-
+    var imageArray = [UIImage]()
+    var currentImage = 0
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -44,6 +49,14 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         defaultImage.addGestureRecognizer(imageTapGesture)
         view.addSubview(defaultImage)
         
+        //Swipe Gesture for Image Swipe
+        let imageSwipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(imageSwiped(gesture:)))
+        imageSwipeLeftGesture.direction = .left
+        let imageSwipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(imageSwiped(gesture:)))
+        imageSwipeRightGesture.direction = .right
+        defaultImage.addGestureRecognizer(imageSwipeLeftGesture)
+        defaultImage.addGestureRecognizer(imageSwipeRightGesture)
+
         //default constraints auto-layout
         defaultFrames()
         
@@ -83,31 +96,57 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
                     //    Selecting Images from Gallery
     @objc func imageTapped(_ sender: UITapGestureRecognizer)
     {
-        let imagePickerControl = UIImagePickerController()
-        imagePickerControl.delegate = self
-        imagePickerControl.allowsEditing = true
-
-        if UIImagePickerController.isSourceTypeAvailable(.camera)
-        {
-            imagePickerControl.sourceType = .camera
+        let pickerController = DKImagePickerController()
+        pickerController.didSelectAssets = { (assets: [DKAsset]) in
+            for asset in assets {
+                asset.fetchOriginalImage(completeBlock: { (imageUI, info) in
+                    let size = CGSize(width: 256, height: 256)
+                    let scaledImage = imageUI!.af_imageAspectScaled(toFill: size)
+                    self.imageArray.append(scaledImage)
+                    self.defaultImage.image = self.imageArray[0]
+                })
+            }
         }
-        else
-        {
-            imagePickerControl.sourceType = .photoLibrary
-        }
-        present(imagePickerControl, animated: true, completion: nil)
-    }
-//                        Finish Selecting Images
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
-    {
-        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        let size = CGSize(width: 256, height: 256)
-        let scaledImage = image.af_imageAspectScaled(toFill: size)
-
-        self.defaultImage.image = scaledImage
-        dismiss(animated: true, completion: nil)
+        pickerController.allowSwipeToSelect = true
+        pickerController.allowMultipleTypes = true
+        pickerController.showsCancelButton = true
+        present(pickerController, animated: true)
     }
     
+    @objc func imageSwiped(gesture: UIGestureRecognizer )
+    {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer
+        {
+            switch swipeGesture.direction
+            {
+            case UISwipeGestureRecognizer.Direction.left:
+                if currentImage != (imageArray.count - 1)
+                {
+                    currentImage += 1
+                }
+                else
+                {
+                    currentImage = 0
+                }
+                    defaultImage.image = imageArray[currentImage]
+                    print(imageArray.count)
+            
+            case UISwipeGestureRecognizer.Direction.right:
+                if currentImage != 0
+                {
+                    currentImage -= 1
+                }
+                else
+                {
+                    currentImage = imageArray.count - 1
+                }
+                    defaultImage.image = imageArray[currentImage]
+                print("swiping")
+            default:
+                break
+            }
+        }
+    }
     
                     //when texts begin editing clear fields, when ends editing bring the default format
     func textViewDidBeginEditing(_ textView: UITextView) {
