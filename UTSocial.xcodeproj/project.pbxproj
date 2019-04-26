@@ -14,6 +14,7 @@
 		051B581C22650BE6009EDD36 /* PostCellSubleaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051B581B22650BE6009EDD36 /* PostCellSubleaseTableViewCell.swift */; };
 		051B581E22650C15009EDD36 /* Sublease.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 051B581D22650C15009EDD36 /* Sublease.storyboard */; };
 		051B582022650D51009EDD36 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 051B581F22650D51009EDD36 /* Menu.storyboard */; };
+		05272B6F227273AA002EEF7E /* PostBuySellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05272B6E227273AA002EEF7E /* PostBuySellViewController.swift */; };
 		057D2C6C225709DB00A7300F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057D2C6B225709DB00A7300F /* AppDelegate.swift */; };
 		057D2C71225709DB00A7300F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 057D2C6F225709DB00A7300F /* Main.storyboard */; };
 		057D2C73225709DD00A7300F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 057D2C72225709DD00A7300F /* Assets.xcassets */; };
@@ -63,6 +64,7 @@
 		051B581B22650BE6009EDD36 /* PostCellSubleaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellSubleaseTableViewCell.swift; sourceTree = "<group>"; };
 		051B581D22650C15009EDD36 /* Sublease.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sublease.storyboard; sourceTree = "<group>"; };
 		051B581F22650D51009EDD36 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
+		05272B6E227273AA002EEF7E /* PostBuySellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBuySellViewController.swift; sourceTree = "<group>"; };
 		057D2C68225709DB00A7300F /* UTSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UTSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		057D2C6B225709DB00A7300F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		057D2C70225709DB00A7300F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				059F09F52261307500330227 /* BuySellViewController.swift */,
+				05272B6E227273AA002EEF7E /* PostBuySellViewController.swift */,
 				05F0CAE8226BD0E4004A510A /* PostCellTableViewCell.swift */,
 				05F0CAEA226FA9F8004A510A /* AddPostBuySellViewController.swift */,
 			);
@@ -506,6 +509,7 @@
 				EAB43641226D7B9100C5583C /* EventTableViewCell.swift in Sources */,
 				05A4D5E422684648002E58E7 /* PostViewController.swift in Sources */,
 				051B581922644F9D009EDD36 /* AddPostSubleaseViewController.swift in Sources */,
+				05272B6F227273AA002EEF7E /* PostBuySellViewController.swift in Sources */,
 				05F0CAE9226BD0E4004A510A /* PostCellTableViewCell.swift in Sources */,
 				051B5813226133C8009EDD36 /* MapViewController.swift in Sources */,
 				057D2C6C225709DB00A7300F /* AppDelegate.swift in Sources */,

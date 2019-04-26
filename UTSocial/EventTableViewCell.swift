@@ -5,7 +5,6 @@
 //  Created by 谢阳欣雨 on 4/21/19.
 //  Copyright © 2019 Maksat Zhazbayev. All rights reserved.
 //
-
 import UIKit
 
 class EventTableViewCell: UITableViewCell {

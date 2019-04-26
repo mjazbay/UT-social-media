@@ -10,13 +10,12 @@ import UIKit
 import AlamofireImage
 import Parse
 
-class AddPostBuySellViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UITextFieldDelegate {
+class AddPostBuySellViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
 
     var defaultImage = UIImageView()
     var postButton = UIBarButtonItem()
     var descriptionTextVIew = UITextView()
     var priceTextField = UITextField()
-    let imageTapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
     var priceLabel = UILabel()
     var descriptionLabel = UILabel()
     let placeHolder = "Hi there, I am selling my school supplies."
@@ -27,11 +26,28 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         // Do any additional setup after loading the view.
         priceTextField.delegate = self
         descriptionTextVIew.delegate = self
+
+        //Right (Post) button configuration
+        postButton = UIBarButtonItem(title: "Post", style: .plain, target: self, action: #selector(postButtonPressed))
+        navigationItem.rightBarButtonItem = postButton
+        navigationItem.rightBarButtonItem?.tintColor = .orange
         
+        self.navigationItem.title = "Add Post"
+        
+
+        
+        //Tap Gesture for Image Selection
+        let imageTapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
+        imageTapGesture.numberOfTapsRequired = 1
+        imageTapGesture.numberOfTouchesRequired = 1
+        defaultImage.isUserInteractionEnabled = true
+        defaultImage.addGestureRecognizer(imageTapGesture)
+        view.addSubview(defaultImage)
+        
+        //default constraints auto-layout
         defaultFrames()
-    
-        self.defaultImage.addGestureRecognizer(imageTapGesture)
-    }
+        
+        }
     
     @objc func postButtonPressed()
     {
@@ -40,7 +56,7 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         if !(anythingEmpty)
             {
             //initializing parse class for Buy ' Sell
-            let buySell = PFObject(className: "Buy'Sell")
+                let buySell = PFObject(className: "BuySell") //in swift 5 you can use ## to escape
             buySell["Price"] = priceTextField.text
             buySell["Description"] = descriptionTextVIew.text
             //Sublease["author"] = PFUser.current()
@@ -55,7 +71,7 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
                 if success
                 {
                     print("Saved")
-    //                self.defaultTextFormat()
+                    self.defaultFrames()
                 }
                 else
                 {
@@ -64,7 +80,7 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
             }
         }
     }
-                    //    Uploading Images
+                    //    Selecting Images from Gallery
     @objc func imageTapped(_ sender: UITapGestureRecognizer)
     {
         let imagePickerControl = UIImagePickerController()
@@ -81,8 +97,16 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         }
         present(imagePickerControl, animated: true, completion: nil)
     }
-                    //    Finish Selecting Images
-    
+//                        Finish Selecting Images
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+    {
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        let size = CGSize(width: 256, height: 256)
+        let scaledImage = image.af_imageAspectScaled(toFill: size)
+
+        self.defaultImage.image = scaledImage
+        dismiss(animated: true, completion: nil)
+    }
     
     
                     //when texts begin editing clear fields, when ends editing bring the default format
@@ -99,9 +123,7 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         textView.text = placeHolder
         textView.textColor = .lightGray
     }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.placeholder = "$10000"
-    }
+
     
                     //check if any of the textfields are empty, if so, return true
     func areTextFieldsEmpty()
@@ -114,6 +136,7 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         else
         {
             priceTextField.backgroundColor = UIColor.white
+            self.anythingEmpty = false
         }
         if descriptionTextVIew.text == self.placeHolder || descriptionTextVIew.text.isEmpty
         {
@@ -124,6 +147,7 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         else
         {
             descriptionTextVIew.backgroundColor = UIColor.white
+            self.anythingEmpty = false
         }
         if defaultImage.image == #imageLiteral(resourceName: "defaultPicture")
         {
@@ -133,6 +157,7 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         else
         {
             defaultImage.backgroundColor = UIColor.white
+            self.anythingEmpty = false
         }
         reloadInputViews()
 
@@ -143,20 +168,9 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
     {
         self.view.backgroundColor = .white
 
-        //Post button configuration
-        postButton = UIBarButtonItem(title: "Post", style: .plain, target: self, action: #selector(postButtonPressed))
-        navigationItem.rightBarButtonItem = postButton
-        navigationItem.rightBarButtonItem?.tintColor = .orange
-
-        //left Back Button configuration
-        navigationItem.leftBarButtonItem?.tintColor = .orange
-        navigationItem.leftBarButtonItem?.title = "Maksat"
         
         // default image configuration
-        view.addSubview(defaultImage)
-        defaultImage.isUserInteractionEnabled = true
-//        defaultImage.addGestureRecognizer(imageTapGesture)
-        
+
         defaultImage.translatesAutoresizingMaskIntoConstraints = false
         defaultImage.image = #imageLiteral(resourceName: "defaultPicture")
         defaultImage.topAnchor.constraint(equalTo: view.topAnchor, constant: (navigationController?.navigationBar.frame.height)! + (navigationController?.navigationBar.frame.height)! + 10).isActive = true
@@ -175,6 +189,7 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         priceLabel.trailingAnchor.constraint(equalTo: priceTextField.leadingAnchor, constant: -10).isActive = true
         priceLabel.widthAnchor.constraint(lessThanOrEqualTo: priceTextField.widthAnchor).isActive = true
         
+        priceTextField.text = String()
         priceTextField.placeholder = "$10000"
         priceTextField.translatesAutoresizingMaskIntoConstraints = false
         priceTextField.topAnchor.constraint(equalTo: defaultImage.bottomAnchor, constant: 30).isActive = true

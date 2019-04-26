@@ -65,6 +65,9 @@ class BuySellViewController: UIViewController, UITableViewDelegate, UITableViewD
         addPostButton.action = #selector(addPost)
     
         self.navigationItem.rightBarButtonItem = addPostButton
+        self.navigationItem.title = "Buy\'Sell"
+        self.navigationController?.navigationBar.tintColor = .orange
+
     }
     
     
@@ -87,7 +90,8 @@ class BuySellViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let transitionVC = PostBuySellViewController()
+        self.navigationController?.pushViewController(transitionVC, animated: true)
     }
     
  //class ends here
