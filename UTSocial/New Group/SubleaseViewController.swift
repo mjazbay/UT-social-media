@@ -17,6 +17,8 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
     let newViewController = NewsViewController()
     var posts = [PFObject]()
     let myRefreshControl = UIRefreshControl()
+    let formatter = DateFormatter()
+    
     
     @IBOutlet weak var mainTableView: UITableView!
     
@@ -35,10 +37,12 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
     //Add a Post Button -> New View Controller
     @IBAction func addPost(_ sender: Any)
     {
-        let storyboard = UIStoryboard(name: "Sublease", bundle: nil)
-        guard let postingVC = storyboard.instantiateViewController(withIdentifier: "postSublease") as? AddPostSubleaseViewController else {return}
-        present(postingVC, animated: true, completion: nil)
-        
+//        let storyboard = UIStoryboard(name: "Sublease", bundle: nil)
+//        guard let postingVC = storyboard.instantiateViewController(withIdentifier: "addPostNav") as? UINavigationController else {return}
+//        present(postingVC, animated: true, completion: nil)
+//        let transitionVC = AddPostSubleaseViewController()
+//        navigationController?.pushViewController(postingVC, animated: true)
+          performSegue(withIdentifier: "toAddPost", sender: self)
     }
     
     @objc func queryData()
@@ -64,7 +68,7 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         // Do any additional setup after loading the view.
-        
+                
         myRefreshControl.addTarget(self, action: #selector(queryData), for: .valueChanged)
         mainTableView.refreshControl = myRefreshControl
     }
@@ -89,23 +93,53 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
         cell.addressLabel.text = post["Address"] as! String
         cell.priceLabel.text = post["Price"] as! String
         cell.descriptionLabel.text = post["Description"] as! String
-       
+
+                // Adding Post Creation Date (date -> String conversion)
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let myString = formatter.string(for: post.createdAt)
+        let myDate = formatter.date(from: myString!)
+        formatter.dateFormat = "dd-MMM-yyyy"
+        let finalString = formatter.string(for: myDate)
+        cell.createdAtLabel.text = finalString
+
+                //    Setting up the Image for the Poster
         let imageFile = post["PosterPic"] as! PFFileObject
         let urlString = imageFile.url!
         let url = URL(string: urlString)!
-        
+                /////
         
         cell.mainPosterImageView.af_setImage(withURL: url)
         
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        let storyboard = UIStoryboard(name: "Sublease", bundle: nil)
-        if let vcTransitionTo = storyboard.instantiateViewController(withIdentifier: "postVC") as? PostViewController
-        {
-        present(vcTransitionTo, animated: true, completion: nil)
-        }
+        let post = posts[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        let transitionVC = PostViewController()
+        transitionVC.descriptionLabel.text = post["Description"] as! String
+        transitionVC.priceLabel.text = post["Price"] as! String
+        transitionVC.addressLabel.text = post["Address"] as! String
+        transitionVC.descriptionLabel.text = post["Description"] as! String
+        
+        // Adding Post Creation Date (date -> String conversion)
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let myString = formatter.string(for: post.createdAt)
+        let myDate = formatter.date(from: myString!)
+        formatter.dateFormat = "dd-MMM-yyyy"
+        let finalString = formatter.string(for: myDate)
+        transitionVC.dateCreatedLabel.text = finalString
+        
+        //    Setting up the Image for the Poster
+        let imageFile = post["PosterPic"] as! PFFileObject
+        let urlString = imageFile.url!
+        let url = URL(string: urlString)!
+        transitionVC.posterImage.af_setImage(withURL: url)
+        /////
+
+        
+        navigationController?.pushViewController(transitionVC, animated: true)
     }
     
 }

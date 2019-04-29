@@ -15,6 +15,7 @@ class PostCellSubleaseTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var createdAtLabel: UILabel!
     
     
     override func awakeFromNib() {

@@ -26,9 +26,10 @@ class MenuTableViewController: UITableViewController {
         switch menuType as! MenuType {
         case .sublease:
             let SubleaseStoryboard = UIStoryboard(name: "Sublease", bundle: nil)
-            if let vc = SubleaseStoryboard.instantiateViewController(withIdentifier: "sublease") as? SubleaseViewController {
+            if let vc = SubleaseStoryboard.instantiateViewController(withIdentifier: "subleaseNavCon") as? UINavigationController {
                 present(vc, animated: true, completion: nil)
             }
+            
         case .buy:
             let buySellVC = BuySellViewController()
             let navController = UINavigationController(rootViewController: buySellVC)
