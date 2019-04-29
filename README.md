@@ -53,6 +53,7 @@ Orange brings UT students together to do more of what they want to do in life. O
 * Allow user to view details of the events they are going
 * <img src='https://github.com/mzhazbay/UT-social-media/blob/master/Video%20Walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 * Event Upload Screen
+<img src='https://github.com/mzhazbay/UT-social-media/blob/master/Video%20Walkthrough2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 * Allow user to upload a poster, add a caption and fill in descriptions(location, time, tags, ...) of an event.
 
 ### 3. Navigation

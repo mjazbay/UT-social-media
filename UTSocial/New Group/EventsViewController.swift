@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import AlamofireImage
 
-class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate {
     
     var posts = [PFObject]()
 
@@ -80,5 +80,15 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             detailsViewController.post = post
             tableView.deselectRow(at: indexPath, animated: true)
         }
+    }
+    @IBAction func menuButton(_ sender: Any)
+    {
+        let storyboard = UIStoryboard(name: "Menu", bundle: nil)
+        guard let menuVC = storyboard.instantiateViewController(withIdentifier: "menuVC") as? MenuTableViewController else {return}
+        
+        let navController = UINavigationController(rootViewController: menuVC)
+        navController.modalPresentationStyle = .overCurrentContext
+        navController.transitioningDelegate = self
+        present(navController, animated: true, completion: nil)
     }
 }
