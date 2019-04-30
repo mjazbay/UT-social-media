@@ -18,6 +18,7 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
     var posts = [PFObject]()
     let myRefreshControl = UIRefreshControl()
     let formatter = DateFormatter()
+    var imageArray: [URL] = []
     
     
     @IBOutlet weak var mainTableView: UITableView!
@@ -49,7 +50,7 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
     {
         let query = PFQuery(className: "Sublease")
         query.order(byDescending: "createdAt")
-        query.includeKeys(["Address", "Price", "Description", "PosterPic"])
+        query.includeKeys(["Address", "Price", "Description", "PosterPics"])
         
         query.findObjectsInBackground { (posts, error) in
             if posts != nil
@@ -71,6 +72,7 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
                 
         myRefreshControl.addTarget(self, action: #selector(queryData), for: .valueChanged)
         mainTableView.refreshControl = myRefreshControl
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -103,13 +105,19 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
         cell.createdAtLabel.text = finalString
 
                 //    Setting up the Image for the Poster
-        let imageFile = post["PosterPic"] as! PFFileObject
-        let urlString = imageFile.url!
-        let url = URL(string: urlString)!
+        let imageFile = post["PosterPics"] as! [PFFileObject]
+        for file in imageFile
+        {
+            imageArray.append(URL(string: file.url!)!)
+        }
+//        let urlString = imageFile.url!
+//        let url = URL(string: urlString)!
                 /////
+        cell.mainPosterImageView.af_setImage(withURL: imageArray[0])
         
-        cell.mainPosterImageView.af_setImage(withURL: url)
-        
+        print(imageArray.count)
+        imageArray = []
+
         return cell
     }
     
@@ -132,10 +140,12 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
         transitionVC.dateCreatedLabel.text = finalString
         
         //    Setting up the Image for the Poster
-        let imageFile = post["PosterPic"] as! PFFileObject
-        let urlString = imageFile.url!
-        let url = URL(string: urlString)!
-        transitionVC.posterImage.af_setImage(withURL: url)
+        let imageFile = post["PosterPics"] as! [PFFileObject]
+        for file in imageFile
+        {
+            transitionVC.imageArray.append(URL(string: file.url!)!)
+        }
+
         /////
 
         

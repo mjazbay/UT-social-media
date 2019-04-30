@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AlamofireImage
+import Parse
 
 class PostViewController: UIViewController {
     
@@ -15,6 +17,11 @@ class PostViewController: UIViewController {
     var descriptionLabel = UILabel()
     var dateCreatedLabel = UILabel()
     var addressLabel = UILabel()
+    var parseImageArray:[PFFileObject] = []
+    var currentImage = 0
+    var imageArray: [URL] = []
+
+
     
     
     override func viewDidLoad() {
@@ -27,7 +34,20 @@ class PostViewController: UIViewController {
         view.addSubview(priceLabel)
         view.addSubview(descriptionLabel)
         view.addSubview(dateCreatedLabel)
+        
+        print(imageArray.count)
+        
+        //Swipe Gesture for Image Swipe
+        posterImage.isUserInteractionEnabled = true
+        let imageSwipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(imageSwiped(gesture:)))
+        imageSwipeLeftGesture.direction = .left
+        let imageSwipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(imageSwiped(gesture:)))
+        imageSwipeRightGesture.direction = .right
+        posterImage.addGestureRecognizer(imageSwipeLeftGesture)
+        posterImage.addGestureRecognizer(imageSwipeRightGesture)
+
         defaultConstraints()
+
     }
     
     func defaultConstraints()
@@ -46,6 +66,8 @@ class PostViewController: UIViewController {
         posterImage.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: 10).isActive = true
         posterImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         posterImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        posterImage.af_setImage(withURL: imageArray[0])
+        
         
                 //PRICE LABEL
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -71,5 +93,41 @@ class PostViewController: UIViewController {
         descriptionLabel.layer.cornerRadius = 5
 
     }
+    
+            //    IMAGE BEING SWIPED
+    @objc func imageSwiped(gesture: UIGestureRecognizer )
+    {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer
+        {
+            switch swipeGesture.direction
+            {
+            case UISwipeGestureRecognizer.Direction.left:
+                if currentImage != (imageArray.count - 1)
+                {
+                    currentImage += 1
+                }
+                else
+                {
+                    currentImage = 0
+                }
+                posterImage.af_setImage(withURL: imageArray[currentImage])
+                
+            case UISwipeGestureRecognizer.Direction.right:
+                if currentImage != 0
+                {
+                    currentImage -= 1
+                }
+                else
+                {
+                    currentImage = imageArray.count - 1
+                }
+                posterImage.af_setImage(withURL: imageArray[currentImage])
+                print("swiping")
+            default:
+                break
+            }
+        }
+    }
+    
 //class ends here
 }
