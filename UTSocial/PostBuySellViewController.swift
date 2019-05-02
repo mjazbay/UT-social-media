@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class PostBuySellViewController: UIViewController {
 
                     //     Constants
-    var posterImage = UIImageView()
+    var posterScrollView = UIScrollView() //UIImageView()
+    var posterContentView = UIStackView()
     var priceLabel = UILabel()
     var createdAtLabel = UILabel()
     var descriptionTextView = UITextView()
@@ -24,56 +26,69 @@ class PostBuySellViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .white
-        view.addSubview(posterImage)
+        view.addSubview(posterScrollView)
         view.addSubview(priceLabel)
         view.addSubview(createdAtLabel)
         view.addSubview(descriptionTextView)
+        view.addSubview(posterScrollView)
+        posterScrollView.addSubview(posterContentView)
         
         
-        //SWIPE gesture for images
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
-        swipeRight.direction = .right
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
-        swipeLeft.direction = .left
-        posterImage.addGestureRecognizer(swipeRight)
-        posterImage.addGestureRecognizer(swipeLeft)
-        posterImage.isUserInteractionEnabled = true
+//        //SWIPE gesture for images
+//        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
+//        swipeRight.direction = .right
+//        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
+//        swipeLeft.direction = .left
+//        posterImage.addGestureRecognizer(swipeRight)
+//        posterImage.addGestureRecognizer(swipeLeft)
+//        posterImage.isUserInteractionEnabled = true
         defaultConstraints()
-        
+        addImageToScrollView()
     }
     //Image SWIPE function
-    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer)
+//    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer)
+//    {
+//        if let swipeGesture = gesture as? UISwipeGestureRecognizer
+//        {
+//            switch swipeGesture.direction
+//            {
+//            case UISwipeGestureRecognizer.Direction.left:
+//                if currentImage != (imageArray.count - 1)
+//                {
+//                    currentImage += 1
+//                }
+//                else
+//                {
+//                    currentImage = 0
+//                }
+//                posterImage.image = imageArray[currentImage]
+//                print(imageArray.count)
+//
+//            case UISwipeGestureRecognizer.Direction.right:
+//                if currentImage != 0
+//                {
+//                    currentImage -= 1
+//                }
+//                else
+//                {
+//                    currentImage = imageArray.count - 1
+//                }
+//                posterImage.image = imageArray[currentImage]
+//                print("swiping")
+//            default:
+//                break
+//            }
+//        }
+//    }
+    
+    func addImageToScrollView()
     {
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer
+        for image in imageArray
         {
-            switch swipeGesture.direction
-            {
-            case UISwipeGestureRecognizer.Direction.left:
-                if currentImage != (imageArray.count - 1)
-                {
-                    currentImage += 1
-                }
-                else
-                {
-                    currentImage = 0
-                }
-                posterImage.image = imageArray[currentImage]
-                print(imageArray.count)
-
-            case UISwipeGestureRecognizer.Direction.right:
-                if currentImage != 0
-                {
-                    currentImage -= 1
-                }
-                else
-                {
-                    currentImage = imageArray.count - 1
-                }
-                posterImage.image = imageArray[currentImage]
-                print("swiping")
-            default:
-                break
-            }
+            let size = CGSize(width: 256, height: 256)
+            let scaledImage = image.af_imageAspectScaled(toFill: size)
+            let imageView = UIImageView(image: scaledImage)
+            posterContentView.addArrangedSubview(imageView)
         }
     }
     
@@ -81,22 +96,30 @@ class PostBuySellViewController: UIViewController {
     func defaultConstraints()
     {
         //Poster Image Location
-        posterImage.image = imageArray[currentImage]
-        posterImage.translatesAutoresizingMaskIntoConstraints = false
-        posterImage.topAnchor.constraint(equalTo: view.topAnchor, constant: (self.navigationController?.navigationBar.frame.height)! + (self.navigationController?.navigationBar.frame.height)!).isActive = true
-        posterImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        posterImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+//        posterImage.image = imageArray[currentImage]
+        posterScrollView.translatesAutoresizingMaskIntoConstraints = false
+        posterScrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: (self.navigationController?.navigationBar.frame.height)! + (self.navigationController?.navigationBar.frame.height)!).isActive = true
+        posterScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        posterScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        posterScrollView.heightAnchor.constraint(equalToConstant: 256).isActive = true
 //        posterImage.bottomAnchor.constraint(equalTo: priceLabel.topAnchor, constant: 10).isActive = true
+        
+        //Content View Location
+        posterContentView.translatesAutoresizingMaskIntoConstraints = false
+        posterContentView.topAnchor.constraint(equalTo: posterScrollView.topAnchor).isActive = true
+        posterContentView.leadingAnchor.constraint(equalTo: posterScrollView.leadingAnchor).isActive = true
+        posterContentView.trailingAnchor.constraint(equalTo: posterScrollView.trailingAnchor).isActive = true
+        posterContentView.bottomAnchor.constraint(equalTo: posterScrollView.bottomAnchor).isActive = true
         
         //Price Label Location
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
-        priceLabel.topAnchor.constraint(equalTo: posterImage.bottomAnchor, constant: 10).isActive = true
+        priceLabel.topAnchor.constraint(equalTo: posterScrollView.bottomAnchor, constant: 10).isActive = true
         priceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         priceLabel.text = "$10000"
         
         //createdAt Label Location
         createdAtLabel.translatesAutoresizingMaskIntoConstraints = false
-        createdAtLabel.topAnchor.constraint(equalTo: posterImage.bottomAnchor, constant: 10).isActive = true
+        createdAtLabel.topAnchor.constraint(equalTo: posterScrollView.bottomAnchor, constant: 10).isActive = true
         createdAtLabel.leadingAnchor.constraint(equalTo: priceLabel.trailingAnchor, constant: 10).isActive = true
         createdAtLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         priceLabel.widthAnchor.constraint(lessThanOrEqualTo: createdAtLabel.widthAnchor).isActive = true

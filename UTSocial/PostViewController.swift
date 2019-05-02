@@ -12,7 +12,8 @@ import Parse
 
 class PostViewController: UIViewController {
     
-    var posterImage = UIImageView()
+    var posterScrollView = UIScrollView()
+    var posterContentView = UIStackView()
     var priceLabel = UILabel()
     var descriptionLabel = UILabel()
     var dateCreatedLabel = UILabel()
@@ -30,24 +31,37 @@ class PostViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
         view.addSubview(addressLabel)
-        view.addSubview(posterImage)
+        view.addSubview(posterScrollView)
         view.addSubview(priceLabel)
         view.addSubview(descriptionLabel)
         view.addSubview(dateCreatedLabel)
         
+        posterScrollView.addSubview(posterContentView)
+        
         print(imageArray.count)
         
         //Swipe Gesture for Image Swipe
-        posterImage.isUserInteractionEnabled = true
-        let imageSwipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(imageSwiped(gesture:)))
-        imageSwipeLeftGesture.direction = .left
-        let imageSwipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(imageSwiped(gesture:)))
-        imageSwipeRightGesture.direction = .right
-        posterImage.addGestureRecognizer(imageSwipeLeftGesture)
-        posterImage.addGestureRecognizer(imageSwipeRightGesture)
+//        posterScrollView.isUserInteractionEnabled = true
+//        let imageSwipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(imageSwiped(gesture:)))
+//        imageSwipeLeftGesture.direction = .left
+//        let imageSwipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(imageSwiped(gesture:)))
+//        imageSwipeRightGesture.direction = .right
+//        posterScrollView.addGestureRecognizer(imageSwipeLeftGesture)
+//        posterScrollView.addGestureRecognizer(imageSwipeRightGesture)
 
         defaultConstraints()
+        addContentToScrollView()
 
+    }
+    
+    func addContentToScrollView()
+    {
+        for url in imageArray
+        {
+            let imageView = UIImageView()
+            imageView.af_setImage(withURL: url)
+            posterContentView.addArrangedSubview(imageView)
+        }
     }
     
     func defaultConstraints()
@@ -62,22 +76,29 @@ class PostViewController: UIViewController {
         addressLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         
                 //POSTER IMAGE
-        posterImage.translatesAutoresizingMaskIntoConstraints = false
-        posterImage.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: 10).isActive = true
-        posterImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        posterImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        posterImage.af_setImage(withURL: imageArray[0])
+        posterScrollView.translatesAutoresizingMaskIntoConstraints = false
+        posterScrollView.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: 10).isActive = true
+        posterScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        posterScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        posterScrollView.heightAnchor.constraint(equalToConstant: 256).isActive = true
+//        posterImage.af_setImage(withURL: imageArray[0])
         
+                //CONTENT VIEW OF IMAGE
+        posterContentView.translatesAutoresizingMaskIntoConstraints = false
+        posterContentView.topAnchor.constraint(equalTo: posterScrollView.topAnchor).isActive = true
+        posterContentView.leadingAnchor.constraint(equalTo: posterScrollView.leadingAnchor).isActive = true
+        posterContentView.trailingAnchor.constraint(equalTo: posterScrollView.trailingAnchor).isActive = true
+        posterContentView.bottomAnchor.constraint(equalTo: posterScrollView.bottomAnchor).isActive = true
         
                 //PRICE LABEL
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         priceLabel.textColor = .red
-        priceLabel.topAnchor.constraint(equalTo: posterImage.bottomAnchor, constant: 10).isActive = true
+        priceLabel.topAnchor.constraint(equalTo: posterScrollView.bottomAnchor, constant: 10).isActive = true
         priceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
 
 //                DATE CREATED LABEL
         dateCreatedLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateCreatedLabel.topAnchor.constraint(equalTo: posterImage.bottomAnchor, constant: 10).isActive = true
+        dateCreatedLabel.topAnchor.constraint(equalTo: posterScrollView.bottomAnchor, constant: 10).isActive = true
         dateCreatedLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         
 //                DESCRIPTION LABEL
@@ -95,39 +116,39 @@ class PostViewController: UIViewController {
     }
     
             //    IMAGE BEING SWIPED
-    @objc func imageSwiped(gesture: UIGestureRecognizer )
-    {
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer
-        {
-            switch swipeGesture.direction
-            {
-            case UISwipeGestureRecognizer.Direction.left:
-                if currentImage != (imageArray.count - 1)
-                {
-                    currentImage += 1
-                }
-                else
-                {
-                    currentImage = 0
-                }
-                posterImage.af_setImage(withURL: imageArray[currentImage])
-                
-            case UISwipeGestureRecognizer.Direction.right:
-                if currentImage != 0
-                {
-                    currentImage -= 1
-                }
-                else
-                {
-                    currentImage = imageArray.count - 1
-                }
-                posterImage.af_setImage(withURL: imageArray[currentImage])
-                print("swiping")
-            default:
-                break
-            }
-        }
-    }
+//    @objc func imageSwiped(gesture: UIGestureRecognizer )
+//    {
+//        if let swipeGesture = gesture as? UISwipeGestureRecognizer
+//        {
+//            switch swipeGesture.direction
+//            {
+//            case UISwipeGestureRecognizer.Direction.left:
+//                if currentImage != (imageArray.count - 1)
+//                {
+//                    currentImage += 1
+//                }
+//                else
+//                {
+//                    currentImage = 0
+//                }
+////                posterImage.af_setImage(withURL: imageArray[currentImage])
+//
+//            case UISwipeGestureRecognizer.Direction.right:
+//                if currentImage != 0
+//                {
+//                    currentImage -= 1
+//                }
+//                else
+//                {
+//                    currentImage = imageArray.count - 1
+//                }
+////                posterImage.af_setImage(withURL: imageArray[currentImage])
+//                print("swiping")
+//            default:
+//                break
+//            }
+//        }
+//    }
     
 //class ends here
 }
