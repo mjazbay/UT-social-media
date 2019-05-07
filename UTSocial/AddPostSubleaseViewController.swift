@@ -15,48 +15,48 @@ import DKImagePickerController
 class AddPostSubleaseViewController: UIViewController,UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate {
     
     //constant labels
-    @IBOutlet weak var defaultPicture: UIImageView!
+
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var defaultPicture: UIScrollView!
+    var contentView = UIStackView()
     var imageArray = [UIImage]()
     var currentImage = 0
-
     
     var anythingEmpty = false
     let placeHolder: String = "Hi there, I am subleasing my place for Fall 2019"
 
     
     //Tap Camera Gesture to Open Camera or Gallery Library
-    @IBAction func cameraTapGesture(_ sender: UITapGestureRecognizer)
-    {
+    @IBAction func cameraTapGesture(_ sender: UITapGestureRecognizer) {
         let pickerController = DKImagePickerController()
         pickerController.didSelectAssets = { (assets: [DKAsset]) in
+            for subview in self.contentView.subviews {
+                self.contentView.removeArrangedSubview(subview)
+            }
             for asset in assets {
                 asset.fetchOriginalImage(completeBlock: { (imageUI, info) in
                     let size = CGSize(width: 394, height: 245)
                     let scaledImage = imageUI!.af_imageAspectScaled(toFill: size)
                     self.imageArray.append(scaledImage)
-                    self.defaultPicture.image = self.imageArray[0]
+                    let scaledImageView = UIImageView(image: scaledImage)
+                    self.contentView.addArrangedSubview(scaledImageView)
+                    
                 })
             }
-        }
+    }
         pickerController.allowSwipeToSelect = true
         pickerController.allowMultipleTypes = true
         pickerController.showsCancelButton = true
         present(pickerController, animated: true)
+        
+//        for image in self.imageArray
+//        {
+//            self.contentView.addSubview(UIImageView(image: image))
+//        }
     }
     
-    //selecting and saving the image to variable and updating default picture image
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
-//    {
-//        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-//        let size = CGSize(width: 394, height: 245)
-//        let scaledImage = image.af_imageAspectScaled(toFill: size)
-//
-//        self.defaultPicture.image = scaledImage
-//        dismiss(animated: true, completion: nil)
-//    }
     //sending all the data to parse server
     @IBAction func postButton(_ sender: Any)
     {
@@ -77,11 +77,6 @@ class AddPostSubleaseViewController: UIViewController,UINavigationControllerDele
                 var file = PFFileObject(data: imageData)!
                 parseImageArray.append(file)
             }
-            
-            
-            //converting image into png data and save it
-//            let imageData = defaultPicture.image!.pngData()!
-//            let file = PFFileObject(data: imageData)
             
             Sublease["PosterPics"] = parseImageArray //file
             
@@ -163,54 +158,18 @@ class AddPostSubleaseViewController: UIViewController,UINavigationControllerDele
         self.priceTextField.delegate = self
         self.addressTextField.delegate = self
 
-        //Swipe Gesture for Image Swipe
-        let imageSwipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(imageSwiped(gesture:)))
-        imageSwipeLeftGesture.direction = .left
-        let imageSwipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(imageSwiped(gesture:)))
-        imageSwipeRightGesture.direction = .right
-        defaultPicture.addGestureRecognizer(imageSwipeLeftGesture)
-        defaultPicture.addGestureRecognizer(imageSwipeRightGesture)
+//        //Swipe Gesture for Image Swipe
+//        let imageSwipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(imageSwiped(gesture:)))
+//        imageSwipeLeftGesture.direction = .left
+//        let imageSwipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(imageSwiped(gesture:)))
+//        imageSwipeRightGesture.direction = .right
+//        defaultPicture.addGestureRecognizer(imageSwipeLeftGesture)
+//        defaultPicture.addGestureRecognizer(imageSwipeRightGesture)
+        defaultPicture.addSubview(contentView)
         
         defaultTextFormat()
         // Do any additional setup after loading the view.
     }
-    
-    @objc func imageSwiped(gesture: UIGestureRecognizer )
-    {
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer
-        {
-            switch swipeGesture.direction
-            {
-            case UISwipeGestureRecognizer.Direction.left:
-                if currentImage != (imageArray.count - 1)
-                {
-                    currentImage += 1
-                }
-                else
-                {
-                    currentImage = 0
-                }
-                defaultPicture.image = imageArray[currentImage]
-                print(imageArray.count)
-                
-            case UISwipeGestureRecognizer.Direction.right:
-                if currentImage != 0
-                {
-                    currentImage -= 1
-                }
-                else
-                {
-                    currentImage = imageArray.count - 1
-                }
-                defaultPicture.image = imageArray[currentImage]
-                print("swiping")
-            default:
-                break
-            }
-        }
-    }
-    
-    
     
     
     //checks text fields for emptyness, and if so changes values of global variale anythinEmpty = true
@@ -244,15 +203,15 @@ class AddPostSubleaseViewController: UIViewController,UINavigationControllerDele
         {
             descriptionTextView.backgroundColor = UIColor.white
         }
-        if defaultPicture.image == #imageLiteral(resourceName: "defaultPicture")
-        {
-            defaultPicture.backgroundColor = UIColor.red
-            self.anythingEmpty = true
-        }
-        else
-        {
-            defaultPicture.backgroundColor = UIColor.white
-        }
+//        if contentView. == #imageLiteral(resourceName: "defaultPicture")
+//        {
+//            defaultPicture.backgroundColor = UIColor.red
+//            self.anythingEmpty = true
+//        }
+//        else
+//        {
+//            defaultPicture.backgroundColor = UIColor.white
+//        }
         reloadInputViews()
     }
     
@@ -261,8 +220,23 @@ class AddPostSubleaseViewController: UIViewController,UINavigationControllerDele
     {
         //Image Format
         //defaultPicture.image = UIImage(named: "defaultPicture")
-        defaultPicture.image = #imageLiteral(resourceName: "defaultPicture")
-            
+//        defaultPicture.image = #imageLiteral(resourceName: "defaultPicture")
+        
+        //Content Format
+        let size = CGSize(width: 394, height: 245)
+        let contentImage: UIImage = #imageLiteral(resourceName: "defaultPicture")
+        let scaledImage = contentImage.af_imageAspectScaled(toFit: size)
+        contentView.addArrangedSubview(UIImageView(image: scaledImage))
+//        contentView.addArrangedSubview(UIImageView(image: #imageLiteral(resourceName: "defaultPicture")))
+        
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.topAnchor.constraint(equalTo: defaultPicture.topAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: defaultPicture.bottomAnchor).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: defaultPicture.leadingAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: defaultPicture.trailingAnchor).isActive = true
+        
+        
+        
         //Description Format //making textView look as textField
         descriptionTextView.textColor = UIColor.lightGray
         descriptionTextView.text = self.placeHolder

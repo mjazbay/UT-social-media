@@ -13,7 +13,8 @@ import DKImagePickerController
 
 class AddPostBuySellViewController: UIViewController, UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate {
 
-    var defaultImage = UIImageView()
+    var defaultImage = UIScrollView()
+    var contentView = UIStackView()
     var postButton = UIBarButtonItem()
     var descriptionTextVIew = UITextView()
     var priceTextField = UITextField()
@@ -48,15 +49,8 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         defaultImage.isUserInteractionEnabled = true
         defaultImage.addGestureRecognizer(imageTapGesture)
         view.addSubview(defaultImage)
+        defaultImage.addSubview(contentView)
         
-        //Swipe Gesture for Image Swipe
-        let imageSwipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(imageSwiped(gesture:)))
-        imageSwipeLeftGesture.direction = .left
-        let imageSwipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(imageSwiped(gesture:)))
-        imageSwipeRightGesture.direction = .right
-        defaultImage.addGestureRecognizer(imageSwipeLeftGesture)
-        defaultImage.addGestureRecognizer(imageSwipeRightGesture)
-
         //default constraints auto-layout
         defaultFrames()
         
@@ -69,16 +63,20 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         if !(anythingEmpty)
             {
             //initializing parse class for Buy ' Sell
-                let buySell = PFObject(className: "BuySell") //in swift 5 you can use ## to escape
+            let buySell = PFObject(className: "BuySell") //in swift 5 you can use ## to escape
             buySell["Price"] = priceTextField.text
             buySell["Description"] = descriptionTextVIew.text
             //Sublease["author"] = PFUser.current()
             
-            //converting image into png data and save it
-            let imageData = defaultImage.image!.pngData()!
-            let file = PFFileObject(data: imageData)
-            
-            buySell["PosterPic"] = file
+            var parseImageArray:[PFFileObject] = []
+            for image in imageArray
+            {
+                var imageData = image.pngData()!
+                var file = PFFileObject(data: imageData)!
+                parseImageArray.append(file)
+            }
+                
+            buySell["PosterPic"] = parseImageArray
             
             buySell.saveInBackground { (success, error) in
                 if success
@@ -98,12 +96,16 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
     {
         let pickerController = DKImagePickerController()
         pickerController.didSelectAssets = { (assets: [DKAsset]) in
+            for subview in self.contentView.subviews {
+                self.contentView.removeArrangedSubview(subview)
+            }
             for asset in assets {
                 asset.fetchOriginalImage(completeBlock: { (imageUI, info) in
-                    let size = CGSize(width: 256, height: 256)
+                    let size = CGSize(width: 394, height: 245)
                     let scaledImage = imageUI!.af_imageAspectScaled(toFill: size)
                     self.imageArray.append(scaledImage)
-                    self.defaultImage.image = self.imageArray[0]
+                    let scaledImageView = UIImageView(image: scaledImage)
+                    self.contentView.addArrangedSubview(scaledImageView)
                 })
             }
         }
@@ -111,41 +113,6 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         pickerController.allowMultipleTypes = true
         pickerController.showsCancelButton = true
         present(pickerController, animated: true)
-    }
-    
-    @objc func imageSwiped(gesture: UIGestureRecognizer )
-    {
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer
-        {
-            switch swipeGesture.direction
-            {
-            case UISwipeGestureRecognizer.Direction.left:
-                if currentImage != (imageArray.count - 1)
-                {
-                    currentImage += 1
-                }
-                else
-                {
-                    currentImage = 0
-                }
-                    defaultImage.image = imageArray[currentImage]
-                    print(imageArray.count)
-            
-            case UISwipeGestureRecognizer.Direction.right:
-                if currentImage != 0
-                {
-                    currentImage -= 1
-                }
-                else
-                {
-                    currentImage = imageArray.count - 1
-                }
-                    defaultImage.image = imageArray[currentImage]
-                print("swiping")
-            default:
-                break
-            }
-        }
     }
     
                     //when texts begin editing clear fields, when ends editing bring the default format
@@ -188,16 +155,16 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
             descriptionTextVIew.backgroundColor = UIColor.white
             self.anythingEmpty = false
         }
-        if defaultImage.image == #imageLiteral(resourceName: "defaultPicture")
-        {
-            defaultImage.backgroundColor = UIColor.red
-            self.anythingEmpty = true
-        }
-        else
-        {
-            defaultImage.backgroundColor = UIColor.white
-            self.anythingEmpty = false
-        }
+//        if defaultImage.image == #imageLiteral(resourceName: "defaultPicture")
+//        {
+//            defaultImage.backgroundColor = UIColor.red
+//            self.anythingEmpty = true
+//        }
+//        else
+//        {
+//            defaultImage.backgroundColor = UIColor.white
+//            self.anythingEmpty = false
+//        }
         reloadInputViews()
 
         
@@ -209,12 +176,23 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
 
         
         // default image configuration
-
         defaultImage.translatesAutoresizingMaskIntoConstraints = false
-        defaultImage.image = #imageLiteral(resourceName: "defaultPicture")
         defaultImage.topAnchor.constraint(equalTo: view.topAnchor, constant: (navigationController?.navigationBar.frame.height)! + (navigationController?.navigationBar.frame.height)! + 10).isActive = true
         defaultImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         defaultImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        defaultImage.heightAnchor.constraint(equalToConstant: 256).isActive = true
+        
+        //content view configuration
+        let size = CGSize(width: 394, height: 245)
+        let contentImage: UIImage = #imageLiteral(resourceName: "defaultPicture")
+        let scaledImage = contentImage.af_imageAspectScaled(toFit: size)
+        contentView.addArrangedSubview(UIImageView(image: scaledImage))
+        
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.topAnchor.constraint(equalTo: defaultImage.topAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: defaultImage.bottomAnchor).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: defaultImage.leadingAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: defaultImage.trailingAnchor).isActive = true
         
         //price label and textview configuration
         view.addSubview(priceLabel)
@@ -251,9 +229,9 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 30).isActive = true
-//        descriptionLabel.trailingAnchor.constraint(equalTo: descriptionTextVIew.leadingAnchor, constant: 10).isActive = true
+
         descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-//        descriptionLabel.widthAnchor.constraint(lessThanOrEqualTo: descriptionTextVIew.widthAnchor).isActive = true
+
         
         descriptionTextVIew.translatesAutoresizingMaskIntoConstraints = false
         descriptionTextVIew.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10).isActive = true
