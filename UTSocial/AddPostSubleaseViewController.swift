@@ -85,6 +85,10 @@ class AddPostSubleaseViewController: UIViewController,UINavigationControllerDele
                 {
                     print("Saved")
                     self.defaultTextFormat()
+//                    for subview in self.contentView.subviews
+//                    {
+//                        self.contentView.removeArrangedSubview(subview)
+//                    }
                 }
                 else
                 {
@@ -92,12 +96,6 @@ class AddPostSubleaseViewController: UIViewController,UINavigationControllerDele
                 }
             }
         }
-    }
-    
-    //cancel Button dismisses Posting Page, goes back to list of subleases
-    @IBAction func cancelButton(_ sender: Any)
-    {
-     dismiss(animated: true, completion: nil)
     }
     
     
@@ -158,13 +156,6 @@ class AddPostSubleaseViewController: UIViewController,UINavigationControllerDele
         self.priceTextField.delegate = self
         self.addressTextField.delegate = self
 
-//        //Swipe Gesture for Image Swipe
-//        let imageSwipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(imageSwiped(gesture:)))
-//        imageSwipeLeftGesture.direction = .left
-//        let imageSwipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(imageSwiped(gesture:)))
-//        imageSwipeRightGesture.direction = .right
-//        defaultPicture.addGestureRecognizer(imageSwipeLeftGesture)
-//        defaultPicture.addGestureRecognizer(imageSwipeRightGesture)
         defaultPicture.addSubview(contentView)
         
         defaultTextFormat()
@@ -218,24 +209,24 @@ class AddPostSubleaseViewController: UIViewController,UINavigationControllerDele
     //Original looks of text fields
     func defaultTextFormat()
     {
-        //Image Format
-        //defaultPicture.image = UIImage(named: "defaultPicture")
-//        defaultPicture.image = #imageLiteral(resourceName: "defaultPicture")
         
         //Content Format
+        //clean previous subview
+//        for subview in contentView.subviews
+//        {
+//            contentView.removeArrangedSubview(subview)
+//        }
+        
         let size = CGSize(width: 394, height: 245)
         let contentImage: UIImage = #imageLiteral(resourceName: "defaultPicture")
         let scaledImage = contentImage.af_imageAspectScaled(toFit: size)
         contentView.addArrangedSubview(UIImageView(image: scaledImage))
-//        contentView.addArrangedSubview(UIImageView(image: #imageLiteral(resourceName: "defaultPicture")))
         
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.topAnchor.constraint(equalTo: defaultPicture.topAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: defaultPicture.bottomAnchor).isActive = true
         contentView.leadingAnchor.constraint(equalTo: defaultPicture.leadingAnchor).isActive = true
         contentView.trailingAnchor.constraint(equalTo: defaultPicture.trailingAnchor).isActive = true
-        
-        
         
         //Description Format //making textView look as textField
         descriptionTextView.textColor = UIColor.lightGray
@@ -248,7 +239,6 @@ class AddPostSubleaseViewController: UIViewController,UINavigationControllerDele
         self.priceTextField.keyboardType = .numbersAndPunctuation
         self.priceTextField.text = String()
         self.priceTextField.placeholder = "$1000"
-        
         
         //Address Format
         self.addressTextField.text = String()

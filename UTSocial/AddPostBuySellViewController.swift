@@ -18,6 +18,8 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
     var postButton = UIBarButtonItem()
     var descriptionTextVIew = UITextView()
     var priceTextField = UITextField()
+    var titleTextField = UITextField()
+    var titleLabel = UILabel()
     var priceLabel = UILabel()
     var descriptionLabel = UILabel()
     let placeHolder = "Hi there, I am selling my school supplies."
@@ -66,17 +68,18 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
             let buySell = PFObject(className: "BuySell") //in swift 5 you can use ## to escape
             buySell["Price"] = priceTextField.text
             buySell["Description"] = descriptionTextVIew.text
+            buySell["Title"] = titleTextField.text
             //Sublease["author"] = PFUser.current()
             
             var parseImageArray:[PFFileObject] = []
             for image in imageArray
             {
-                var imageData = image.pngData()!
-                var file = PFFileObject(data: imageData)!
+                let imageData = image.pngData()!
+                let file = PFFileObject(data: imageData)!
                 parseImageArray.append(file)
             }
                 
-            buySell["PosterPic"] = parseImageArray
+            buySell["PosterPics"] = parseImageArray
             
             buySell.saveInBackground { (success, error) in
                 if success
@@ -155,6 +158,16 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
             descriptionTextVIew.backgroundColor = UIColor.white
             self.anythingEmpty = false
         }
+        if titleTextField.text!.isEmpty
+        {
+            titleTextField.backgroundColor = .red
+            self.anythingEmpty = true
+        }
+        else
+        {
+            titleTextField.backgroundColor = .white
+            self.anythingEmpty = false
+        }
 //        if defaultImage.image == #imageLiteral(resourceName: "defaultPicture")
 //        {
 //            defaultImage.backgroundColor = UIColor.red
@@ -183,16 +196,40 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         defaultImage.heightAnchor.constraint(equalToConstant: 256).isActive = true
         
         //content view configuration
+        for subview in self.contentView.subviews {
+            self.contentView.removeArrangedSubview(subview)
+        }
         let size = CGSize(width: 394, height: 245)
         let contentImage: UIImage = #imageLiteral(resourceName: "defaultPicture")
         let scaledImage = contentImage.af_imageAspectScaled(toFit: size)
-        contentView.addArrangedSubview(UIImageView(image: scaledImage))
+//        contentView.addArrangedSubview(UIImageView(image: scaledImage))
+        contentView.addSubview(UIImageView(image: scaledImage))
         
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.topAnchor.constraint(equalTo: defaultImage.topAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: defaultImage.bottomAnchor).isActive = true
         contentView.leadingAnchor.constraint(equalTo: defaultImage.leadingAnchor).isActive = true
         contentView.trailingAnchor.constraint(equalTo: defaultImage.trailingAnchor).isActive = true
+        
+        //Title Text Field Configuration
+        view.addSubview(titleLabel)
+        view.addSubview(titleTextField)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.topAnchor.constraint(equalTo: defaultImage.bottomAnchor, constant: 30).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
+        titleLabel.widthAnchor.constraint(lessThanOrEqualTo: titleTextField.widthAnchor).isActive = true
+        
+        titleTextField.translatesAutoresizingMaskIntoConstraints = false
+        titleTextField.topAnchor.constraint(equalTo: defaultImage.bottomAnchor, constant: 30).isActive = true
+        titleTextField.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 10).isActive = true
+        titleTextField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
+        titleLabel.font = UIFont.boldSystemFont(ofSize: titleLabel.font.pointSize + 2)
+        titleLabel.text = "Title:"
+        titleTextField.placeholder = "Macbook Air 2018 for Sale"
+        titleTextField.borderStyle = .roundedRect
+        titleTextField.textAlignment = .left
+        titleTextField.text = String()
+        
         
         //price label and textview configuration
         view.addSubview(priceLabel)
@@ -201,7 +238,7 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         priceLabel.text = "Price:"
         priceLabel.font = UIFont.boldSystemFont(ofSize: priceLabel.font.pointSize + 2)
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
-        priceLabel.topAnchor.constraint(equalTo: defaultImage.bottomAnchor, constant: 30).isActive = true
+        priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
         priceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         priceLabel.trailingAnchor.constraint(equalTo: priceTextField.leadingAnchor, constant: -10).isActive = true
         priceLabel.widthAnchor.constraint(lessThanOrEqualTo: priceTextField.widthAnchor).isActive = true
@@ -209,7 +246,7 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         priceTextField.text = String()
         priceTextField.placeholder = "$10000"
         priceTextField.translatesAutoresizingMaskIntoConstraints = false
-        priceTextField.topAnchor.constraint(equalTo: defaultImage.bottomAnchor, constant: 30).isActive = true
+        priceTextField.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 10).isActive = true
         priceTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         priceTextField.borderStyle = .roundedRect
         priceTextField.textAlignment = .left
@@ -236,7 +273,7 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         descriptionTextVIew.translatesAutoresizingMaskIntoConstraints = false
         descriptionTextVIew.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10).isActive = true
         descriptionTextVIew.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        descriptionTextVIew.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10).isActive = true
+        descriptionTextVIew.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         descriptionTextVIew.heightAnchor.constraint(equalToConstant: 200).isActive = true
     
     }

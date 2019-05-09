@@ -73,6 +73,9 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
         myRefreshControl.addTarget(self, action: #selector(queryData), for: .valueChanged)
         mainTableView.refreshControl = myRefreshControl
         
+        self.navigationController?.navigationBar.tintColor = .orange
+
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)

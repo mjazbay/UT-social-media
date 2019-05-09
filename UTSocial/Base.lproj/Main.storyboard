@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="VC1ViewController" customModule="UTSocial" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="UTSocial" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,19 +64,19 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="qD3-gV-0PO" kind="relationship" relationship="viewControllers" id="jTa-6h-ifg"/>
-                        <segue destination="GbQ-J6-tXr" kind="relationship" relationship="viewControllers" id="R2P-L3-M3Z"/>
-                        <segue destination="YqO-ni-W1y" kind="relationship" relationship="viewControllers" id="yH2-W6-q61"/>
+                        <segue destination="qD3-gV-0PO" kind="relationship" relationship="viewControllers" id="aXH-jA-lra"/>
+                        <segue destination="GbQ-J6-tXr" kind="relationship" relationship="viewControllers" id="9cX-7y-upY"/>
+                        <segue destination="YqO-ni-W1y" kind="relationship" relationship="viewControllers" id="XVc-NA-Tg6"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GQE-c9-lpv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="377" y="748"/>
         </scene>
-        <!--View Controller-->
+        <!--News View Controller-->
         <scene sceneID="xXl-bK-Ytt">
             <objects>
-                <viewController id="Xnv-xU-zwt" sceneMemberID="viewController">
+                <viewController id="Xnv-xU-zwt" customClass="NewsViewController" customModule="UTSocial" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Ub-Vm-KkU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -159,7 +159,7 @@
         <!--Navigation Controller-->
         <scene sceneID="9vJ-m3-f3u">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tdx-38-veS" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeNavController" automaticallyAdjustsScrollViewInsets="NO" id="tdx-38-veS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ftp-WH-tu8">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

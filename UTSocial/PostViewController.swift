@@ -40,15 +40,7 @@ class PostViewController: UIViewController {
         
         print(imageArray.count)
         
-        //Swipe Gesture for Image Swipe
-//        posterScrollView.isUserInteractionEnabled = true
-//        let imageSwipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(imageSwiped(gesture:)))
-//        imageSwipeLeftGesture.direction = .left
-//        let imageSwipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(imageSwiped(gesture:)))
-//        imageSwipeRightGesture.direction = .right
-//        posterScrollView.addGestureRecognizer(imageSwipeLeftGesture)
-//        posterScrollView.addGestureRecognizer(imageSwipeRightGesture)
-
+        
         defaultConstraints()
         addContentToScrollView()
 
@@ -114,41 +106,6 @@ class PostViewController: UIViewController {
         descriptionLabel.layer.cornerRadius = 5
 
     }
-    
-            //    IMAGE BEING SWIPED
-//    @objc func imageSwiped(gesture: UIGestureRecognizer )
-//    {
-//        if let swipeGesture = gesture as? UISwipeGestureRecognizer
-//        {
-//            switch swipeGesture.direction
-//            {
-//            case UISwipeGestureRecognizer.Direction.left:
-//                if currentImage != (imageArray.count - 1)
-//                {
-//                    currentImage += 1
-//                }
-//                else
-//                {
-//                    currentImage = 0
-//                }
-////                posterImage.af_setImage(withURL: imageArray[currentImage])
-//
-//            case UISwipeGestureRecognizer.Direction.right:
-//                if currentImage != 0
-//                {
-//                    currentImage -= 1
-//                }
-//                else
-//                {
-//                    currentImage = imageArray.count - 1
-//                }
-////                posterImage.af_setImage(withURL: imageArray[currentImage])
-//                print("swiping")
-//            default:
-//                break
-//            }
-//        }
-//    }
     
 //class ends here
 }

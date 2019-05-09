@@ -17,8 +17,9 @@ class PostBuySellViewController: UIViewController {
     var priceLabel = UILabel()
     var createdAtLabel = UILabel()
     var descriptionTextView = UITextView()
-    var imageArray = [#imageLiteral(resourceName: "defaultPicture"), #imageLiteral(resourceName: "utmenulogo"), #imageLiteral(resourceName: "defaultPicture"), #imageLiteral(resourceName: "utmenulogo") ] // this should not be instantiated
+    var imageArray: [URL] = [] // this should not be instantiated
     var currentImage = 0
+    var titleLabel = UILabel()
     
     override func viewDidLoad()
     {
@@ -30,79 +31,55 @@ class PostBuySellViewController: UIViewController {
         view.addSubview(priceLabel)
         view.addSubview(createdAtLabel)
         view.addSubview(descriptionTextView)
+        view.addSubview(titleLabel)
         view.addSubview(posterScrollView)
         posterScrollView.addSubview(posterContentView)
         
-        
-//        //SWIPE gesture for images
-//        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
-//        swipeRight.direction = .right
-//        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
-//        swipeLeft.direction = .left
-//        posterImage.addGestureRecognizer(swipeRight)
-//        posterImage.addGestureRecognizer(swipeLeft)
-//        posterImage.isUserInteractionEnabled = true
         defaultConstraints()
         addImageToScrollView()
     }
-    //Image SWIPE function
-//    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer)
-//    {
-//        if let swipeGesture = gesture as? UISwipeGestureRecognizer
-//        {
-//            switch swipeGesture.direction
-//            {
-//            case UISwipeGestureRecognizer.Direction.left:
-//                if currentImage != (imageArray.count - 1)
-//                {
-//                    currentImage += 1
-//                }
-//                else
-//                {
-//                    currentImage = 0
-//                }
-//                posterImage.image = imageArray[currentImage]
-//                print(imageArray.count)
-//
-//            case UISwipeGestureRecognizer.Direction.right:
-//                if currentImage != 0
-//                {
-//                    currentImage -= 1
-//                }
-//                else
-//                {
-//                    currentImage = imageArray.count - 1
-//                }
-//                posterImage.image = imageArray[currentImage]
-//                print("swiping")
-//            default:
-//                break
-//            }
-//        }
-//    }
     
     func addImageToScrollView()
     {
-        for image in imageArray
+//            let size = CGSize(width: 256, height: 256)
+//            for imageURL in imageArray
+//            {
+//                let imageView = UIImageView()
+//                imageView.af_setImage(withURL: imageURL)
+//                let scaledImage = imageView.image?.af_imageAspectScaled(toFill: size)
+//                let contentView = UIImageView(image: scaledImage)
+//                posterContentView.addArrangedSubview(contentView)
+//            }
+        for url in imageArray
         {
-            let size = CGSize(width: 256, height: 256)
-            let scaledImage = image.af_imageAspectScaled(toFill: size)
-            let imageView = UIImageView(image: scaledImage)
+            let imageView = UIImageView()
+            imageView.af_setImage(withURL: url)
             posterContentView.addArrangedSubview(imageView)
         }
     }
+
     
     //default constraints
     func defaultConstraints()
     {
+        //        TItle Label Location
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: (self.navigationController?.navigationBar.frame.height)! + (self.navigationController?.navigationBar.frame.height)!).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
+        titleLabel.textAlignment = .center
+        titleLabel.font = UIFont.boldSystemFont(ofSize: titleLabel.font.pointSize + 5)
+        titleLabel.textColor = .red
+        titleLabel.numberOfLines = 0
+//        titleLabel.text = "Macbook Pro 2012 for Sale"
+        
+        
         //Poster Image Location
-//        posterImage.image = imageArray[currentImage]
         posterScrollView.translatesAutoresizingMaskIntoConstraints = false
-        posterScrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: (self.navigationController?.navigationBar.frame.height)! + (self.navigationController?.navigationBar.frame.height)!).isActive = true
+        posterScrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true //, constant: (self.navigationController?.navigationBar.frame.height)! + (self.navigationController?.navigationBar.frame.height)!).isActive = true
         posterScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         posterScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         posterScrollView.heightAnchor.constraint(equalToConstant: 256).isActive = true
-//        posterImage.bottomAnchor.constraint(equalTo: priceLabel.topAnchor, constant: 10).isActive = true
         
         //Content View Location
         posterContentView.translatesAutoresizingMaskIntoConstraints = false
@@ -115,7 +92,11 @@ class PostBuySellViewController: UIViewController {
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         priceLabel.topAnchor.constraint(equalTo: posterScrollView.bottomAnchor, constant: 10).isActive = true
         priceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        priceLabel.text = "$10000"
+//        priceLabel.text = "$10000"
+        priceLabel.textColor = .red
+        priceLabel.textAlignment = .center
+        priceLabel.font = priceLabel.font.withSize(titleLabel.font.pointSize)
+        
         
         //createdAt Label Location
         createdAtLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -123,14 +104,18 @@ class PostBuySellViewController: UIViewController {
         createdAtLabel.leadingAnchor.constraint(equalTo: priceLabel.trailingAnchor, constant: 10).isActive = true
         createdAtLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         priceLabel.widthAnchor.constraint(lessThanOrEqualTo: createdAtLabel.widthAnchor).isActive = true
-        createdAtLabel.text = "created at 12.01.19 @ 10:20 pm"
+        createdAtLabel.textAlignment = .right
+//        createdAtLabel.text = "created at 12.01.19 @ 10:20 pm"
         
         descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
         descriptionTextView.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 10).isActive = true
         descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-        descriptionTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 10).isActive = true
-        descriptionTextView.text = "Selling this camera, barely used, like new condition"
+        descriptionTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
+        descriptionTextView.font = descriptionTextView.font?.withSize(descriptionTextView.font!.pointSize + 5)
+        descriptionTextView.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
+        descriptionTextView.layer.borderWidth = 1.0
+        descriptionTextView.layer.cornerRadius = 5
     }
 //end of class
 }
