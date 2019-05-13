@@ -31,6 +31,7 @@
 		05A4D5E422684648002E58E7 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4D5E322684648002E58E7 /* PostViewController.swift */; };
 		05F0CAE9226BD0E4004A510A /* PostCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F0CAE8226BD0E4004A510A /* PostCellTableViewCell.swift */; };
 		05F0CAEB226FA9F9004A510A /* AddPostBuySellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F0CAEA226FA9F8004A510A /* AddPostBuySellViewController.swift */; };
+		520A2EE5228A087500FD7721 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520A2EE4228A087500FD7721 /* ArticleCell.swift */; };
 		8481A432E0AC02E67388B49F /* Pods_UTSocial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5769A988E72F46EE9F5F70 /* Pods_UTSocial.framework */; };
 		915F976C64ADA46774CBD056 /* Pods_UTSocialUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E736CD2B59166CDDA5F57D11 /* Pods_UTSocialUITests.framework */; };
 		EA04EC182265436E000CAC19 /* Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA04EC172265436E000CAC19 /* Events.storyboard */; };
@@ -93,6 +94,7 @@
 		05F0CAEA226FA9F8004A510A /* AddPostBuySellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostBuySellViewController.swift; sourceTree = "<group>"; };
 		3AC6A6284D1887A35E77F971 /* Pods-UTSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UTSocial.release.xcconfig"; path = "Pods/Target Support Files/Pods-UTSocial/Pods-UTSocial.release.xcconfig"; sourceTree = "<group>"; };
 		4A5769A988E72F46EE9F5F70 /* Pods_UTSocial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UTSocial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		520A2EE4228A087500FD7721 /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		A188FE5C8F59175F55FF5130 /* Pods-UTSocialUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UTSocialUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UTSocialUITests/Pods-UTSocialUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A93B339E03F18D02CA50EEB2 /* Pods-UTSocialTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UTSocialTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UTSocialTests/Pods-UTSocialTests.release.xcconfig"; sourceTree = "<group>"; };
 		C02A033EC8973219C004F0F2 /* Pods-UTSocial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UTSocial.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UTSocial/Pods-UTSocial.debug.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				EA8C3993228923CD00095D0C /* ChatViewController.swift */,
 				EA8C39952289261B00095D0C /* ChatTableViewCell.swift */,
 				051B5810226133BD009EDD36 /* NewsViewController.swift */,
+				520A2EE4228A087500FD7721 /* ArticleCell.swift */,
 				051B5812226133C8009EDD36 /* MapViewController.swift */,
 				0593F48C2287852600089023 /* FortyAcres.plist */,
 				0593F48E228789F600089023 /* FortyAcres.swift */,
@@ -542,6 +545,7 @@
 				05F0CAE9226BD0E4004A510A /* PostCellTableViewCell.swift in Sources */,
 				051B5813226133C8009EDD36 /* MapViewController.swift in Sources */,
 				0593F48F228789F600089023 /* FortyAcres.swift in Sources */,
+				520A2EE5228A087500FD7721 /* ArticleCell.swift in Sources */,
 				057D2C6C225709DB00A7300F /* AppDelegate.swift in Sources */,
 				05F0CAEB226FA9F9004A510A /* AddPostBuySellViewController.swift in Sources */,
 				059F09F82261308100330227 /* EventsViewController.swift in Sources */,
