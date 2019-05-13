@@ -29,12 +29,12 @@
 		059F09F62261307500330227 /* BuySellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F09F52261307500330227 /* BuySellViewController.swift */; };
 		059F09F82261308100330227 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F09F72261308100330227 /* EventsViewController.swift */; };
 		05A4D5E422684648002E58E7 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4D5E322684648002E58E7 /* PostViewController.swift */; };
+		05DB8D84228A03B700266AFB /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DB8D83228A03B700266AFB /* ChatViewController.swift */; };
 		05F0CAE9226BD0E4004A510A /* PostCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F0CAE8226BD0E4004A510A /* PostCellTableViewCell.swift */; };
 		05F0CAEB226FA9F9004A510A /* AddPostBuySellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F0CAEA226FA9F8004A510A /* AddPostBuySellViewController.swift */; };
 		8481A432E0AC02E67388B49F /* Pods_UTSocial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5769A988E72F46EE9F5F70 /* Pods_UTSocial.framework */; };
 		915F976C64ADA46774CBD056 /* Pods_UTSocialUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E736CD2B59166CDDA5F57D11 /* Pods_UTSocialUITests.framework */; };
 		EA04EC182265436E000CAC19 /* Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA04EC172265436E000CAC19 /* Events.storyboard */; };
-		EA8C3994228923CD00095D0C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C3993228923CD00095D0C /* ChatViewController.swift */; };
 		EA8C39962289261B00095D0C /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C39952289261B00095D0C /* ChatTableViewCell.swift */; };
 		EAB43641226D7B9100C5583C /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB43640226D7B9100C5583C /* EventTableViewCell.swift */; };
 		EAB43643226D7C8E00C5583C /* AddPostEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB43642226D7C8E00C5583C /* AddPostEventViewController.swift */; };
@@ -89,6 +89,7 @@
 		059F09F72261308100330227 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventsViewController.swift; path = "New Group/EventsViewController.swift"; sourceTree = "<group>"; };
 		05A4D5E322684648002E58E7 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		05B269E222862FBC0072189E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		05DB8D83228A03B700266AFB /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		05F0CAE8226BD0E4004A510A /* PostCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellTableViewCell.swift; sourceTree = "<group>"; };
 		05F0CAEA226FA9F8004A510A /* AddPostBuySellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostBuySellViewController.swift; sourceTree = "<group>"; };
 		3AC6A6284D1887A35E77F971 /* Pods-UTSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UTSocial.release.xcconfig"; path = "Pods/Target Support Files/Pods-UTSocial/Pods-UTSocial.release.xcconfig"; sourceTree = "<group>"; };
@@ -100,7 +101,6 @@
 		D6B90B316CE62831C1D29E92 /* Pods-UTSocialTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UTSocialTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UTSocialTests/Pods-UTSocialTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E736CD2B59166CDDA5F57D11 /* Pods_UTSocialUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UTSocialUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA04EC172265436E000CAC19 /* Events.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Events.storyboard; sourceTree = "<group>"; };
-		EA8C3993228923CD00095D0C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = "/Users/xieyangxinyu/Desktop/CodePath/UT-social-media/UTSocial/ChatViewController.swift"; sourceTree = "<absolute>"; };
 		EA8C39952289261B00095D0C /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		EAB43640226D7B9100C5583C /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		EAB43642226D7C8E00C5583C /* AddPostEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPostEventViewController.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 		051B5809226132EE009EDD36 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				EA8C3993228923CD00095D0C /* ChatViewController.swift */,
+				05DB8D83228A03B700266AFB /* ChatViewController.swift */,
 				EA8C39952289261B00095D0C /* ChatTableViewCell.swift */,
 				051B5810226133BD009EDD36 /* NewsViewController.swift */,
 				051B5812226133C8009EDD36 /* MapViewController.swift */,
@@ -534,6 +534,7 @@
 			files = (
 				059F09F0225FD17F00330227 /* MenuTableViewController.swift in Sources */,
 				059F09F62261307500330227 /* BuySellViewController.swift in Sources */,
+				05DB8D84228A03B700266AFB /* ChatViewController.swift in Sources */,
 				059F09F2225FD3AF00330227 /* slideInTransition.swift in Sources */,
 				EAB43641226D7B9100C5583C /* EventTableViewCell.swift in Sources */,
 				05A4D5E422684648002E58E7 /* PostViewController.swift in Sources */,
@@ -551,7 +552,6 @@
 				051B581C22650BE6009EDD36 /* PostCellSubleaseTableViewCell.swift in Sources */,
 				EAB43645226D94A900C5583C /* EventDetailViewController.swift in Sources */,
 				EA8C39962289261B00095D0C /* ChatTableViewCell.swift in Sources */,
-				EA8C3994228923CD00095D0C /* ChatViewController.swift in Sources */,
 				059F09F42261305F00330227 /* SubleaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
