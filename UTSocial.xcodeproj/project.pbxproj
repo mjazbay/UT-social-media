@@ -21,6 +21,8 @@
 		057D2C76225709DD00A7300F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 057D2C74225709DD00A7300F /* LaunchScreen.storyboard */; };
 		057D2C81225709DE00A7300F /* UTSocialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057D2C80225709DE00A7300F /* UTSocialTests.swift */; };
 		057D2C8C225709DE00A7300F /* UTSocialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057D2C8B225709DE00A7300F /* UTSocialUITests.swift */; };
+		0593F48D2287852600089023 /* FortyAcres.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0593F48C2287852600089023 /* FortyAcres.plist */; };
+		0593F48F228789F600089023 /* FortyAcres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593F48E228789F600089023 /* FortyAcres.swift */; };
 		059F09EA225F96EE00330227 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F09E9225F96EE00330227 /* HomeViewController.swift */; };
 		059F09F0225FD17F00330227 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F09EF225FD17F00330227 /* MenuTableViewController.swift */; };
 		059F09F2225FD3AF00330227 /* slideInTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F09F1225FD3AF00330227 /* slideInTransition.swift */; };
@@ -77,6 +79,8 @@
 		057D2C87225709DE00A7300F /* UTSocialUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UTSocialUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		057D2C8B225709DE00A7300F /* UTSocialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTSocialUITests.swift; sourceTree = "<group>"; };
 		057D2C8D225709DE00A7300F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0593F48C2287852600089023 /* FortyAcres.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FortyAcres.plist; sourceTree = "<group>"; };
+		0593F48E228789F600089023 /* FortyAcres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyAcres.swift; sourceTree = "<group>"; };
 		059F09E9225F96EE00330227 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		059F09EF225FD17F00330227 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuTableViewController.swift; path = ../MenuTableViewController.swift; sourceTree = "<group>"; };
 		059F09F1225FD3AF00330227 /* slideInTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slideInTransition.swift; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 		059F09F52261307500330227 /* BuySellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BuySellViewController.swift; path = "New Group/BuySellViewController.swift"; sourceTree = "<group>"; };
 		059F09F72261308100330227 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventsViewController.swift; path = "New Group/EventsViewController.swift"; sourceTree = "<group>"; };
 		05A4D5E322684648002E58E7 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		05B269E222862FBC0072189E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		05F0CAE8226BD0E4004A510A /* PostCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellTableViewCell.swift; sourceTree = "<group>"; };
 		05F0CAEA226FA9F8004A510A /* AddPostBuySellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostBuySellViewController.swift; sourceTree = "<group>"; };
 		3AC6A6284D1887A35E77F971 /* Pods-UTSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UTSocial.release.xcconfig"; path = "Pods/Target Support Files/Pods-UTSocial/Pods-UTSocial.release.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +154,8 @@
 				051B580E226133A9009EDD36 /* ChatViewController.swift */,
 				051B5810226133BD009EDD36 /* NewsViewController.swift */,
 				051B5812226133C8009EDD36 /* MapViewController.swift */,
+				0593F48C2287852600089023 /* FortyAcres.plist */,
+				0593F48E228789F600089023 /* FortyAcres.swift */,
 			);
 			name = TabBar;
 			sourceTree = "<group>";
@@ -233,6 +240,7 @@
 		5F6833CCAB1AD9D5DADEFFB4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				05B269E222862FBC0072189E /* MapKit.framework */,
 				4A5769A988E72F46EE9F5F70 /* Pods_UTSocial.framework */,
 				F8E3AC17A9E6B0F54B8E6AEB /* Pods_UTSocialTests.framework */,
 				E736CD2B59166CDDA5F57D11 /* Pods_UTSocialUITests.framework */,
@@ -338,6 +346,11 @@
 					057D2C67225709DB00A7300F = {
 						CreatedOnToolsVersion = 10.2;
 						LastSwiftMigration = 1020;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					057D2C7B225709DE00A7300F = {
 						CreatedOnToolsVersion = 10.2;
@@ -376,6 +389,7 @@
 			files = (
 				051B582022650D51009EDD36 /* Menu.storyboard in Resources */,
 				051B581E22650C15009EDD36 /* Sublease.storyboard in Resources */,
+				0593F48D2287852600089023 /* FortyAcres.plist in Resources */,
 				057D2C76225709DD00A7300F /* LaunchScreen.storyboard in Resources */,
 				057D2C73225709DD00A7300F /* Assets.xcassets in Resources */,
 				057D2C71225709DB00A7300F /* Main.storyboard in Resources */,
@@ -524,6 +538,7 @@
 				05272B6F227273AA002EEF7E /* PostBuySellViewController.swift in Sources */,
 				05F0CAE9226BD0E4004A510A /* PostCellTableViewCell.swift in Sources */,
 				051B5813226133C8009EDD36 /* MapViewController.swift in Sources */,
+				0593F48F228789F600089023 /* FortyAcres.swift in Sources */,
 				057D2C6C225709DB00A7300F /* AppDelegate.swift in Sources */,
 				05F0CAEB226FA9F9004A510A /* AddPostBuySellViewController.swift in Sources */,
 				059F09F82261308100330227 /* EventsViewController.swift in Sources */,
