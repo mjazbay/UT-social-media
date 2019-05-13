@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		051B580F226133A9009EDD36 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051B580E226133A9009EDD36 /* ChatViewController.swift */; };
 		051B5811226133BD009EDD36 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051B5810226133BD009EDD36 /* NewsViewController.swift */; };
 		051B5813226133C8009EDD36 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051B5812226133C8009EDD36 /* MapViewController.swift */; };
 		051B581922644F9D009EDD36 /* AddPostSubleaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051B581822644F9D009EDD36 /* AddPostSubleaseViewController.swift */; };
@@ -35,6 +34,8 @@
 		8481A432E0AC02E67388B49F /* Pods_UTSocial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5769A988E72F46EE9F5F70 /* Pods_UTSocial.framework */; };
 		915F976C64ADA46774CBD056 /* Pods_UTSocialUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E736CD2B59166CDDA5F57D11 /* Pods_UTSocialUITests.framework */; };
 		EA04EC182265436E000CAC19 /* Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA04EC172265436E000CAC19 /* Events.storyboard */; };
+		EA8C3994228923CD00095D0C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C3993228923CD00095D0C /* ChatViewController.swift */; };
+		EA8C39962289261B00095D0C /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C39952289261B00095D0C /* ChatTableViewCell.swift */; };
 		EAB43641226D7B9100C5583C /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB43640226D7B9100C5583C /* EventTableViewCell.swift */; };
 		EAB43643226D7C8E00C5583C /* AddPostEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB43642226D7C8E00C5583C /* AddPostEventViewController.swift */; };
 		EAB43645226D94A900C5583C /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB43644226D94A900C5583C /* EventDetailViewController.swift */; };
@@ -59,7 +60,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		051B580E226133A9009EDD36 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		051B5810226133BD009EDD36 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		051B5812226133C8009EDD36 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		051B581822644F9D009EDD36 /* AddPostSubleaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostSubleaseViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +100,8 @@
 		D6B90B316CE62831C1D29E92 /* Pods-UTSocialTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UTSocialTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UTSocialTests/Pods-UTSocialTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E736CD2B59166CDDA5F57D11 /* Pods_UTSocialUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UTSocialUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA04EC172265436E000CAC19 /* Events.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Events.storyboard; sourceTree = "<group>"; };
+		EA8C3993228923CD00095D0C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = "/Users/xieyangxinyu/Desktop/CodePath/UT-social-media/UTSocial/ChatViewController.swift"; sourceTree = "<absolute>"; };
+		EA8C39952289261B00095D0C /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		EAB43640226D7B9100C5583C /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		EAB43642226D7C8E00C5583C /* AddPostEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPostEventViewController.swift; sourceTree = "<group>"; };
 		EAB43644226D94A900C5583C /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
@@ -151,7 +153,8 @@
 		051B5809226132EE009EDD36 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				051B580E226133A9009EDD36 /* ChatViewController.swift */,
+				EA8C3993228923CD00095D0C /* ChatViewController.swift */,
+				EA8C39952289261B00095D0C /* ChatTableViewCell.swift */,
 				051B5810226133BD009EDD36 /* NewsViewController.swift */,
 				051B5812226133C8009EDD36 /* MapViewController.swift */,
 				0593F48C2287852600089023 /* FortyAcres.plist */,
@@ -544,10 +547,11 @@
 				059F09F82261308100330227 /* EventsViewController.swift in Sources */,
 				059F09EA225F96EE00330227 /* HomeViewController.swift in Sources */,
 				051B5811226133BD009EDD36 /* NewsViewController.swift in Sources */,
-				051B580F226133A9009EDD36 /* ChatViewController.swift in Sources */,
 				EAB43643226D7C8E00C5583C /* AddPostEventViewController.swift in Sources */,
 				051B581C22650BE6009EDD36 /* PostCellSubleaseTableViewCell.swift in Sources */,
 				EAB43645226D94A900C5583C /* EventDetailViewController.swift in Sources */,
+				EA8C39962289261B00095D0C /* ChatTableViewCell.swift in Sources */,
+				EA8C3994228923CD00095D0C /* ChatViewController.swift in Sources */,
 				059F09F42261305F00330227 /* SubleaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -726,7 +730,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XZ4BYZ5G52;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = UTSocial/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -748,7 +752,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XZ4BYZ5G52;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = UTSocial/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -108,22 +108,41 @@
             </objects>
             <point key="canvasLocation" x="377" y="1604"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Chat View Controller-->
         <scene sceneID="Nxc-F0-P8k">
             <objects>
-                <tableViewController id="6wS-Rc-Wl1" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yYD-Fv-667" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="6wS-Rc-Wl1" customClass="ChatViewController" customModule="UTSocial" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="EU4-aR-ft8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="WEc-Mm-6kg">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatTableViewCell" id="WEc-Mm-6kg" customClass="ChatTableViewCell" customModule="UTSocial" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WEc-Mm-6kg" id="brM-sg-Gql">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ChatTableViewCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WEc-Mm-6kg" id="brM-sg-Gql" customClass="ChatTableViewCell" customModule="UTSocial" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngg-N9-vWH">
+                                            <rect key="frame" x="41" y="19" width="42" height="6"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ngg-N9-vWH" firstAttribute="leading" secondItem="brM-sg-Gql" secondAttribute="leadingMargin" constant="21" id="EaE-li-bew"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ngg-N9-vWH" secondAttribute="bottom" constant="8" id="KKV-ux-eRo"/>
+                                        <constraint firstItem="ngg-N9-vWH" firstAttribute="top" secondItem="brM-sg-Gql" secondAttribute="topMargin" constant="8" id="lIt-R9-FBh"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="messageLabel" destination="ngg-N9-vWH" id="bcT-g9-HNs"/>
+                                    <outletCollection property="gestureRecognizers" destination="bXu-Al-gtQ" appends="YES" id="sCU-gA-8Rq"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -132,10 +151,17 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="f5V-Pw-6N9"/>
+                    <connections>
+                        <outlet property="tableView" destination="EU4-aR-ft8" id="HDn-UJ-5PS"/>
+                    </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yYD-Fv-667" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="bXu-Al-gtQ">
+                    <connections>
+                        <action selector="endEdit:" destination="6wS-Rc-Wl1" id="Pnv-LK-MwE"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1612" y="2354"/>
+            <point key="canvasLocation" x="1611.5942028985507" y="2353.7946428571427"/>
         </scene>
         <!--UT Chat-->
         <scene sceneID="38b-ej-DPz">

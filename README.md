@@ -38,7 +38,7 @@ Orange brings UT students together to do more of what they want to do in life. O
 
 
 **Optional Nice-to-have Stories**
-* User can enter a group chat.
+* [x] User can enter a group chat.
 * User can have private chat with another user. 
 
 
