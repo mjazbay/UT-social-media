@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tdx-38-veS">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,7 +15,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="UTSocial" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -33,7 +33,7 @@
                     <tabBarItem key="tabBarItem" title="UT Map" id="ZkU-jv-MGD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p51-wA-umV">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -78,16 +78,81 @@
             <objects>
                 <viewController id="Xnv-xU-zwt" customClass="NewsViewController" customModule="UTSocial" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Ub-Vm-KkU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sBa-3h-U9e">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="554" id="qkm-3j-2Up"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArticleCell" rowHeight="231" id="3ip-PL-dA6" customClass="ArticleCell" customModule="UTSocial" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="231"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3ip-PL-dA6" id="eVE-s6-obb">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="230.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bFm-wQ-kRX">
+                                                    <rect key="frame" x="15" y="50.5" width="130" height="130"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="130" id="OaS-15-yLc"/>
+                                                        <constraint firstAttribute="width" constant="130" id="dFO-iz-759"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRi-Bh-V6b">
+                                                    <rect key="frame" x="153" y="50.5" width="199" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVI-Ss-Ptx">
+                                                    <rect key="frame" x="153" y="78" width="199" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJ8-rS-qti">
+                                                    <rect key="frame" x="331.5" y="213.5" width="43.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="WJ8-rS-qti" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bVI-Ss-Ptx" secondAttribute="bottom" constant="8" id="6rd-F4-mhh"/>
+                                                <constraint firstAttribute="trailing" secondItem="WJ8-rS-qti" secondAttribute="trailing" id="Fbe-Ne-o7s"/>
+                                                <constraint firstItem="RRi-Bh-V6b" firstAttribute="top" secondItem="bFm-wQ-kRX" secondAttribute="top" id="FeT-oA-pKi"/>
+                                                <constraint firstItem="WJ8-rS-qti" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eVE-s6-obb" secondAttribute="leading" constant="20" symbolic="YES" id="TXi-iU-DLh"/>
+                                                <constraint firstItem="bVI-Ss-Ptx" firstAttribute="leading" secondItem="bFm-wQ-kRX" secondAttribute="trailing" constant="8" id="WkY-97-fG3"/>
+                                                <constraint firstItem="RRi-Bh-V6b" firstAttribute="leading" secondItem="bFm-wQ-kRX" secondAttribute="trailing" constant="8" id="ZH1-zx-KYi"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="bVI-Ss-Ptx" secondAttribute="trailing" constant="8" id="a2p-Yi-PZz"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="RRi-Bh-V6b" secondAttribute="trailing" constant="8" id="adm-Tr-moC"/>
+                                                <constraint firstItem="bFm-wQ-kRX" firstAttribute="centerY" secondItem="eVE-s6-obb" secondAttribute="centerY" id="eNu-lN-Jw6"/>
+                                                <constraint firstItem="bFm-wQ-kRX" firstAttribute="leading" secondItem="eVE-s6-obb" secondAttribute="leadingMargin" id="p6b-B8-iOk"/>
+                                                <constraint firstItem="bVI-Ss-Ptx" firstAttribute="top" secondItem="RRi-Bh-V6b" secondAttribute="bottom" constant="8" id="qWM-Ke-zCJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="WJ8-rS-qti" secondAttribute="bottom" id="qq5-hF-w9G"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sBa-3h-U9e" firstAttribute="top" secondItem="1Ca-CO-p7o" secondAttribute="top" id="mjv-8d-MBt"/>
+                            <constraint firstItem="sBa-3h-U9e" firstAttribute="leading" secondItem="1Ca-CO-p7o" secondAttribute="leading" id="oWz-F6-KJ4"/>
+                            <constraint firstItem="sBa-3h-U9e" firstAttribute="trailing" secondItem="1Ca-CO-p7o" secondAttribute="trailing" id="qYV-j1-EFu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1Ca-CO-p7o"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ozb-FE-e1P"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t3S-hd-gsW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="376.81159420289856" y="2354.4642857142858"/>
+            <point key="canvasLocation" x="376.80000000000001" y="2353.6731634182911"/>
         </scene>
         <!--UT News-->
         <scene sceneID="sUv-5A-gwT">
@@ -96,7 +161,7 @@
                     <tabBarItem key="tabBarItem" title="UT News" id="yr1-oq-LUX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zpo-td-oUR">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -111,22 +176,21 @@
         <!--Chat View Controller-->
         <scene sceneID="Nxc-F0-P8k">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yYD-Fv-667" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="6wS-Rc-Wl1" customClass="ChatViewController" customModule="UTSocial" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="EU4-aR-ft8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatTableViewCell" id="WEc-Mm-6kg" customClass="ChatTableViewCell" customModule="UTSocial" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ChatTableViewCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WEc-Mm-6kg" id="brM-sg-Gql" customClass="ChatTableViewCell" customModule="UTSocial" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngg-N9-vWH">
-                                            <rect key="frame" x="41" y="19" width="42" height="6"/>
+                                            <rect key="frame" x="37" y="19" width="42" height="6"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -155,6 +219,7 @@
                         <outlet property="tableView" destination="EU4-aR-ft8" id="HDn-UJ-5PS"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yYD-Fv-667" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="bXu-Al-gtQ">
                     <connections>
                         <action selector="endEdit:" destination="6wS-Rc-Wl1" id="Pnv-LK-MwE"/>
@@ -170,7 +235,7 @@
                     <tabBarItem key="tabBarItem" title="UT Chat" id="5QY-9f-zsw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="b2n-xS-zrc">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -188,7 +253,7 @@
                 <navigationController storyboardIdentifier="HomeNavController" automaticallyAdjustsScrollViewInsets="NO" id="tdx-38-veS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ftp-WH-tu8">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
