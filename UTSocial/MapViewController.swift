@@ -58,9 +58,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //        addPolygon()
         
 
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPress(gesture:)))
-        mapView?.addGestureRecognizer(longPressGesture)
-        longPressGesture.minimumPressDuration = 0.1
+//        LONG PRESS TO GET THE COORDINATES
+//        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPress(gesture:)))
+//        mapView?.addGestureRecognizer(longPressGesture)
+//        longPressGesture.minimumPressDuration = 0.1
         
 //        let myString = myFortyAcres[0] as! String
         var array = myFortyAcres.components(separatedBy: ", ")
@@ -172,20 +173,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     
     
-    @objc func longPress(gesture: UILongPressGestureRecognizer)
-    {
-        let touchPoint = gesture.location(in: self.mapView)
-        let coordinate = self.mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = coordinate
-        self.mapView.addAnnotation(annotation)
-
-        self.fortyAcres.append(annotation.coordinate)
-
-        let myPolyLine = MKPolyline(coordinates: fortyAcres, count: fortyAcres.count)
-        self.mapView.addOverlay(myPolyLine)
-//        print(self.fortyAcres)
-    }
+//    @objc func longPress(gesture: UILongPressGestureRecognizer)
+//    {
+//        let touchPoint = gesture.location(in: self.mapView)
+//        let coordinate = self.mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
+//        let annotation = MKPointAnnotation()
+//        annotation.coordinate = coordinate
+//        self.mapView.addAnnotation(annotation)
+//
+//        self.fortyAcres.append(annotation.coordinate)
+//
+//        let myPolyLine = MKPolyline(coordinates: fortyAcres, count: fortyAcres.count)
+//        self.mapView.addOverlay(myPolyLine)
+////        print(self.fortyAcres)
+//    }
     
 //end of class
     }

@@ -60,12 +60,16 @@ PODS:
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
   - TOCropViewController (2.4.0)
+  - TwitterCore (3.2.0)
+  - TwitterKit (3.4.2):
+    - TwitterCore (>= 3.2.0)
 
 DEPENDENCIES:
   - AlamofireImage
   - DKImagePickerController
   - MessageInputBar
   - Parse
+  - TwitterKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -80,6 +84,8 @@ SPEC REPOS:
     - Parse
     - SDWebImage
     - TOCropViewController
+    - TwitterCore
+    - TwitterKit
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
@@ -93,7 +99,9 @@ SPEC CHECKSUMS:
   Parse: 3b31a3dd1777b07ee7f0caee32fafbff544483a5
   SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
   TOCropViewController: 368d8df3ea43b62c3dc5a61f11b9048274d240bd
+  TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
+  TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
 
-PODFILE CHECKSUM: 780405b4cf84a4d932a86b42436c6f91d23b786f
+PODFILE CHECKSUM: 441818fc7bac5eb624445f768aefc4f286b8b9a5
 
 COCOAPODS: 1.5.3

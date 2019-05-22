@@ -10,6 +10,7 @@ target 'UTSocial' do
   pod "AlamofireImage"
   pod "MessageInputBar"
   pod "DKImagePickerController"
+  pod "TwitterKit"
 
   target 'UTSocialTests' do
     inherit! :search_paths
