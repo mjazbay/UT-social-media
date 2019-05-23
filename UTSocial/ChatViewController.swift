@@ -12,7 +12,12 @@ import MessageInputBar
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate, MessageInputBarDelegate {
     
-    @IBOutlet var tableView: UITableView!
+    var myTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    var tapGesture: UITapGestureRecognizer!
     
     var posts = [PFObject]()
     
@@ -39,10 +44,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             if success{
                 print("Chat saved!")
             }else {
-                print("Error: \(error?.localizedDescription)")
+                print("Error: \(error!.localizedDescription)")
             }
         }
-        tableView.reloadData()
+        myTableView.reloadData()
         
         chatBar.inputTextView.text = nil
         becomeFirstResponder()
@@ -50,14 +55,29 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        self.view.backgroundColor = .white
+        self.view.addSubview(myTableView)
+        myTableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 60).isActive = true
+        myTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        myTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        myTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
+        
+        self.myTableView.delegate = self
+        self.myTableView.dataSource = self
         chatBar.delegate = self
         
-        myRefreshControl.addTarget(self, action: #selector(queryData), for: .valueChanged)
-        tableView.refreshControl = myRefreshControl
+        myTableView.register(ChatTableViewCell.self, forCellReuseIdentifier: "chatCell")
+        myTableView.separatorStyle = .none
         
-        tableView.keyboardDismissMode = .interactive
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(endEdit(_:)))
+        myTableView.addGestureRecognizer(tapGesture)
+        
+        myRefreshControl.addTarget(self, action: #selector(queryData), for: .valueChanged)
+        myTableView.refreshControl = myRefreshControl
+        
+        myTableView.keyboardDismissMode = .interactive
+        
+        let timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(queryData), userInfo: nil, repeats: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -69,32 +89,38 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @objc func queryData(){
         let query = PFQuery(className: "Chat")
         query.includeKeys(["ChatContent"])
-        query.order(byAscending: "Time")
+        query.order(byDescending: "createdAt")
         query.limit = 20
         
         query.findObjectsInBackground{
             (posts, error) in
             if posts != nil{
                 self.posts = posts!
-                self.tableView.reloadData()
+                self.myTableView.reloadData()
                 self.myRefreshControl.endRefreshing()
             }else {
                 print("error!")
             }
         }
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell") as! ChatTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell") as! ChatTableViewCell
         let post = posts[indexPath.row]
-        cell.messageLabel.text = post["ChatContent"] as! String
+        cell.messageLabel.text = (post["ChatContent"] as! String)
         return cell
     }
     
-    @IBAction func endEdit(_ sender: Any) {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        myTableView.estimatedRowHeight = 100
+        return UITableView.automaticDimension
+    }
+    
+    @objc func endEdit(_ sender: Any) {
         view.endEditing(true)
     }
     
@@ -110,4 +136,5 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             view.frame.origin.y = 0
         }
     }
+    
 }
