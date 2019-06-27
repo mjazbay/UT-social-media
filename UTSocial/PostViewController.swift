@@ -63,6 +63,7 @@ class PostViewController: UIViewController {
         addressLabel.numberOfLines = 0
         addressLabel.textAlignment = .center
         addressLabel.textColor = .red
+        addressLabel.font = UIFont.boldSystemFont(ofSize: descriptionLabel.font.pointSize + 2)
         addressLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: (self.navigationController?.navigationBar.frame.height)! + (self.navigationController?.navigationBar.frame.height)! + 10).isActive = true
         addressLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         addressLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
@@ -85,6 +86,7 @@ class PostViewController: UIViewController {
                 //PRICE LABEL
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         priceLabel.textColor = .red
+        priceLabel.font = UIFont.boldSystemFont(ofSize: descriptionLabel.font.pointSize + 2)
         priceLabel.topAnchor.constraint(equalTo: posterScrollView.bottomAnchor, constant: 10).isActive = true
         priceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
 
@@ -96,6 +98,7 @@ class PostViewController: UIViewController {
 //                DESCRIPTION LABEL
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.textAlignment = .left
+        descriptionLabel.numberOfLines = 0
         descriptionLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 10).isActive = true
         descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true

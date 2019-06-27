@@ -47,7 +47,6 @@ class PostCellTableViewCell: UITableViewCell {
         titlelabel.translatesAutoresizingMaskIntoConstraints = false
         titlelabel.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true
         titlelabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor, constant: 10).isActive = true
-//        titlelabel.trailingAnchor.constraint(equalTo: priceLabel.leadingAnchor,constant: -10).isActive = true
         titlelabel.heightAnchor.constraint(equalTo: priceLabel.heightAnchor).isActive = true
         titlelabel.widthAnchor.constraint(greaterThanOrEqualTo: priceLabel.widthAnchor).isActive = true
         //         Price Label Formation
@@ -65,7 +64,7 @@ class PostCellTableViewCell: UITableViewCell {
         posterImage.topAnchor.constraint(equalTo: titlelabel.bottomAnchor, constant: 10).isActive = true
         posterImage.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor, constant:  5).isActive = true
         posterImage.trailingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor, constant: -10).isActive = true
-        posterImage.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor, constant: 5).isActive = true
+        posterImage.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor, constant: 10).isActive = true
         posterImage.widthAnchor.constraint(equalTo: descriptionLabel.widthAnchor).isActive = true
         
         

@@ -20,6 +20,11 @@ class AddPostSubleaseViewController: UIViewController,UINavigationControllerDele
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var defaultPicture: UIScrollView!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    
     var contentView = UIStackView()
     var imageArray = [UIImage]()
     var currentImage = 0
@@ -85,10 +90,6 @@ class AddPostSubleaseViewController: UIViewController,UINavigationControllerDele
                 {
                     print("Saved")
                     self.defaultTextFormat()
-//                    for subview in self.contentView.subviews
-//                    {
-//                        self.contentView.removeArrangedSubview(subview)
-//                    }
                 }
                 else
                 {
@@ -159,6 +160,7 @@ class AddPostSubleaseViewController: UIViewController,UINavigationControllerDele
         defaultPicture.addSubview(contentView)
         
         defaultTextFormat()
+        self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
     
@@ -194,29 +196,57 @@ class AddPostSubleaseViewController: UIViewController,UINavigationControllerDele
         {
             descriptionTextView.backgroundColor = UIColor.white
         }
-//        if contentView. == #imageLiteral(resourceName: "defaultPicture")
-//        {
-//            defaultPicture.backgroundColor = UIColor.red
-//            self.anythingEmpty = true
-//        }
-//        else
-//        {
-//            defaultPicture.backgroundColor = UIColor.white
-//        }
         reloadInputViews()
     }
     
     //Original looks of text fields
     func defaultTextFormat()
     {
+        //Poster Picture Format
+        defaultPicture.translatesAutoresizingMaskIntoConstraints = false
+        defaultPicture.topAnchor.constraint(equalTo: self.view.topAnchor, constant: (navigationController?.navigationBar.frame.height)! + (navigationController?.navigationBar.frame.height)! + 10).isActive = true
+        defaultPicture.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
+        defaultPicture.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
+        defaultPicture.widthAnchor.constraint(equalToConstant: 394).isActive = true
+        defaultPicture.heightAnchor.constraint(equalToConstant: 245).isActive = true
+        
+        //address label and textfield
+        addressLabel.translatesAutoresizingMaskIntoConstraints = false
+        addressLabel.topAnchor.constraint(equalTo: defaultPicture.bottomAnchor, constant: 10).isActive = true
+        addressLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
+        addressLabel.trailingAnchor.constraint(equalTo: addressTextField.leadingAnchor, constant: -10).isActive = true
+        
+        addressTextField.translatesAutoresizingMaskIntoConstraints = false
+        addressTextField.topAnchor.constraint(equalTo: defaultPicture.bottomAnchor, constant: 10).isActive = true
+        addressTextField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
+        addressTextField.centerYAnchor.constraint(equalTo: addressLabel.centerYAnchor).isActive = true
+        
+        //price label and textfield
+        priceLabel.translatesAutoresizingMaskIntoConstraints = false
+        priceLabel.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: 20).isActive = true
+        priceLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
+        priceLabel.trailingAnchor.constraint(greaterThanOrEqualTo: priceTextField.leadingAnchor, constant: -10).isActive = true
+        
+        priceTextField.translatesAutoresizingMaskIntoConstraints = false
+        priceTextField.topAnchor.constraint(equalTo: addressTextField.bottomAnchor, constant: 20).isActive = true
+        priceTextField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
+        priceTextField.widthAnchor.constraint(equalTo: addressTextField.widthAnchor).isActive = true
+        priceTextField.centerYAnchor.constraint(equalTo: priceLabel.centerYAnchor).isActive = true
+        
+        //description label
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 20).isActive = true
+        descriptionLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
+        
+        descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
+        descriptionTextView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10).isActive = true
+        descriptionTextView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
+        descriptionTextView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
+        descriptionTextView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20).isActive = true
+        
+        
         
         //Content Format
-        //clean previous subview
-//        for subview in contentView.subviews
-//        {
-//            contentView.removeArrangedSubview(subview)
-//        }
-        
         let size = CGSize(width: 394, height: 245)
         let contentImage: UIImage = #imageLiteral(resourceName: "defaultPicture")
         let scaledImage = contentImage.af_imageAspectScaled(toFit: size)
@@ -243,5 +273,19 @@ class AddPostSubleaseViewController: UIViewController,UINavigationControllerDele
         //Address Format
         self.addressTextField.text = String()
         self.addressTextField.placeholder = "600 W 26th Street, 78705"
+    }
+
+    //class ends here
+}
+
+extension AddPostSubleaseViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddPostSubleaseViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

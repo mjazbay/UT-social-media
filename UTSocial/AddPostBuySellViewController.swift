@@ -55,6 +55,7 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         
         //default constraints auto-layout
         defaultFrames()
+        self.hideKeyboardWhenTappedAround()
         
         }
     
@@ -124,14 +125,19 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         textView.text = String()
         textView.textColor = .black
     }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if descriptionTextVIew.text.isEmpty
+        {
+            textView.text = placeHolder
+            textView.textColor = .lightGray
+        }
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.becomeFirstResponder()
         textField.text = "$"
     }
-    func textViewDidEndEditing(_ textView: UITextView) {
-        textView.text = placeHolder
-        textView.textColor = .lightGray
-    }
+    
 
     
                     //check if any of the textfields are empty, if so, return true
@@ -199,7 +205,8 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         for subview in self.contentView.subviews {
             self.contentView.removeArrangedSubview(subview)
         }
-        let size = CGSize(width: 394, height: 245)
+//        let size = CGSize(width: 394, height: 245)
+        let size = CGSize(width: 350, height: 200)
         let contentImage: UIImage = #imageLiteral(resourceName: "defaultPicture")
         let scaledImage = contentImage.af_imageAspectScaled(toFit: size)
 //        contentView.addArrangedSubview(UIImageView(image: scaledImage))
@@ -229,6 +236,7 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         titleTextField.borderStyle = .roundedRect
         titleTextField.textAlignment = .left
         titleTextField.text = String()
+        titleTextField.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
         
         
         //price label and textview configuration
@@ -250,6 +258,7 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         priceTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         priceTextField.borderStyle = .roundedRect
         priceTextField.textAlignment = .left
+        priceTextField.centerYAnchor.constraint(equalTo: priceLabel.centerYAnchor).isActive = true
         
         //description label and description text view configuration
         view.addSubview(descriptionLabel)
@@ -274,7 +283,22 @@ class AddPostBuySellViewController: UIViewController, UINavigationControllerDele
         descriptionTextVIew.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10).isActive = true
         descriptionTextVIew.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         descriptionTextVIew.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-        descriptionTextVIew.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        descriptionTextVIew.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -10).isActive = true
+//        descriptionTextVIew.heightAnchor.constraint(equalToConstant: 200).isActive = true
     
+    }
+    
+//class ends here
+}
+
+extension AddPostBuySellViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddPostBuySellViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

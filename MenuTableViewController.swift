@@ -15,9 +15,33 @@ enum MenuType: Int {
     case events }
 
 class MenuTableViewController: UITableViewController {
-
+    
+    @IBOutlet weak var homeImageView: UIImageView!
+    
+    @IBOutlet weak var subleaseImageView: UIImageView!
+    
+    @IBOutlet weak var buySellImageView: UIImageView!
+    
+    @IBOutlet weak var eventsImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
+        
+        homeImageView.image = #imageLiteral(resourceName: "uttower")
+        subleaseImageView.image = #imageLiteral(resourceName: "sublease")
+        buySellImageView.image = #imageLiteral(resourceName: "buysell")
+        eventsImageView.image = #imageLiteral(resourceName: "events")
+        
+        homeImageView.tintColor = .orange
+        subleaseImageView.tintColor = .orange
+        buySellImageView.tintColor = .orange
+        eventsImageView.tintColor = .orange
+        
+        homeImageView.backgroundColor = .orange
+        subleaseImageView.backgroundColor = .orange
+        buySellImageView.backgroundColor = .orange
+        eventsImageView.backgroundColor = .orange
     }
 
     // MARK: - Table view data source

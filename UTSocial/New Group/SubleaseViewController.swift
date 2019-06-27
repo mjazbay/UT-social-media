@@ -21,7 +21,8 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
     var imageArray: [URL] = []
     
     
-    @IBOutlet weak var mainTableView: UITableView!
+//    @IBOutlet weak var mainTableView: UITableView!
+    var mainTableView = UITableView()
     
     //MENU BUTTON OPTIONS -> Slide in Menu
     @IBAction func menuButton(_ sender: Any)
@@ -68,6 +69,10 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
+        self.view = self.mainTableView
+        self.mainTableView.estimatedRowHeight = 100
+        self.mainTableView.rowHeight = UITableView.automaticDimension
+        self.mainTableView.register(pseudoSubleaseTableViewCell.self, forCellReuseIdentifier: "subleaseCell")
         // Do any additional setup after loading the view.
                 
         myRefreshControl.addTarget(self, action: #selector(queryData), for: .valueChanged)
@@ -91,13 +96,13 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = mainTableView.dequeueReusableCell(withIdentifier: "subleaseCell") as! PostCellSubleaseTableViewCell
+        let cell = mainTableView.dequeueReusableCell(withIdentifier: "subleaseCell") as! pseudoSubleaseTableViewCell
         
         let post = posts[indexPath.row]
         
-        cell.addressLabel.text = post["Address"] as! String
-        cell.priceLabel.text = post["Price"] as! String
-        cell.descriptionLabel.text = post["Description"] as! String
+        cell.addressText.text = post["Address"] as? String
+        cell.priceText.text = post["Price"] as? String
+        cell.descriptionLabel.text = post["Description"] as? String
 
                 // Adding Post Creation Date (date -> String conversion)
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -116,7 +121,7 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
 //        let urlString = imageFile.url!
 //        let url = URL(string: urlString)!
                 /////
-        cell.mainPosterImageView.af_setImage(withURL: imageArray[0])
+        cell.posterImageView.af_setImage(withURL: imageArray[0])
         
         print(imageArray.count)
         imageArray = []
@@ -129,10 +134,10 @@ class SubleaseViewController: UIViewController, UITableViewDelegate, UITableView
         let post = posts[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
         let transitionVC = PostViewController()
-        transitionVC.descriptionLabel.text = post["Description"] as! String
-        transitionVC.priceLabel.text = post["Price"] as! String
-        transitionVC.addressLabel.text = post["Address"] as! String
-        transitionVC.descriptionLabel.text = post["Description"] as! String
+        transitionVC.descriptionLabel.text = post["Description"] as? String
+        transitionVC.priceLabel.text = post["Price"] as? String
+        transitionVC.addressLabel.text = post["Address"] as? String
+        transitionVC.descriptionLabel.text = post["Description"] as? String
         
         // Adding Post Creation Date (date -> String conversion)
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"

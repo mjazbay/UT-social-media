@@ -29,4 +29,12 @@ class PostCellSubleaseTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+//    func default_frames() {
+//        mainPosterImageView.translatesAutoresizingMaskIntoConstraints = false
+//        mainPosterImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10).isActive = true
+//        mainPosterImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10).isActive = true
+//        mainPosterImageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10).isActive = true
+//        mainPosterImageView.bottomAnchor.constraint(equalTo: priceLabel.topAnchor, constant: 10).isActive = true
+//    }
+    
 }
