@@ -11,15 +11,15 @@ Group Project - README
 
 ## Overview
 ### Description
-Orange brings UT students together to do more of what they want to do in life. Orange help students to explore, learn and connect through on and off campus events. 
+Orange brings UT students together to do more of what they want to do in life. Orange help students to explore, learn and connect through on and off campus events, and anonymous communication. Stay on top of UT news, buy and sell items or just spend time with UT community. Share what is on your mind, and announce your organization events through posts and celebrate. Discover events that are happening around you, list your own item for sale, and search for another roomate or roomshare for current or upcoming semester.  
 
 ### App Evaluation
 - **Category:** Social networking
 - **Mobile:** iPhone
-- **Story:** Allow students to share events and organize activities.
+- **Story:** Allow students to share events and organize activities, buy and sell within UT community, search for sublease/sublets and roomates.
 - **Market:** Any students can enjoy this app. 
-- **Habit:** Users can post, look up and share events many times a day. Very habit forming!
-- **Scope:** Orange starts out narrow focused, just posting, viewing and sharing events. Will expand to a larger scope, including feed sharing(sublease ...) and group chat features.
+- **Habit:** Users can post, look up and share posts many times a day. Very habit forming!
+- **Scope:** Orange starts out narrow focused, just posting, viewing and sharing events. Will expand to a larger scope, including feed sharing and group chat features.
 
 ## Product Spec
 
@@ -27,19 +27,19 @@ Orange brings UT students together to do more of what they want to do in life. O
 
 **Required Must-have Stories**
 
-* User can sign up to create a new account.
-* User can log in/out.
+* User can sign up to create a new account. (in progress) (might be unncessary)
+* User can log in/out. (in progress) (might be unncessary)
 * [x] User can upload a poster, add a caption, a description and post it to the server.
 * [x] User can view the latest 20 posts.
 * [x] User can pull to refresh.
-* User can share events.
+* User can share posts. (in progress)
 * User can tap a cell to see more details about a particular event.
-* User can add a profile picture.
+* User can add a profile picture. (in progress)
 
 
 **Optional Nice-to-have Stories**
 * [x] User can enter a group chat.
-* User can have private chat with another user. 
+* User can have private chat with another user. (in progress) (might be unncessary)
 
 
 ### 2. Screen Archetypes
